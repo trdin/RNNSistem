@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import requests
-
+import sklearn
 # %%
 model = tf.keras.models.load_model('./models/lstm_model_final.h5')
 stands_scaler = joblib.load('./models/scalers/stands_scaler.joblib')
