@@ -1,0 +1,19 @@
+
+[
+  '{{repeat(48)}}',
+  {
+    "date": '{{date(new Date(2023, 11, 4), new Date(2023, 11, 10), "YYYY-MM-dd HH:mm:ss+00:00")}}',
+    "temperature": '{{integer(18, 25)}}',
+    "relative_humidity": '{{integer(40, 80)}}',
+    "dew_point": '{{integer(10, 15)}}',
+    "apparent_temperature": '{{integer(18, 25)}}',
+    "precipitation_probability": '{{integer(0, 100)}}',
+    "rain": '{{integer(0, 100)}}',
+    "surface_pressure": '{{integer(1000, 1020)}}',
+    "bike_stands": '{{22}}',
+    "available_bike_stands": '{{integer(0, 22)}}',
+  }
+]
+
+
+https://json-generator.com/
