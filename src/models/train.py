@@ -8,6 +8,19 @@ import src.data.prepare_learn_data as pld
 import src.helpers.calculate as calc
 import src.visualization.visualization as vis
 
+def save_train_metrics(history, file_path):
+    with open(file_path, 'w') as file:
+        file.write("Epoch\tTrain Loss\tValidation Loss\n")
+        for epoch, (train_loss, val_loss) in enumerate(zip(history.history['loss'], history.history['val_loss']), start=1):
+            file.write(f"{epoch}\t{train_loss}\t{val_loss}\n")
+
+def save_test_metrics(mae, mse, evs, file_path):
+    with open(file_path, 'w') as file:
+        file.write("Model Metrics\n")
+        file.write(f"MAE: {mae}\n")
+        file.write(f"MSE: {mse}\n")
+        file.write(f"EVS: {evs}\n")
+
 def build_lstm_model(input_shape):
     model = Sequential()
     model.add(LSTM(units=32, return_sequences=True, input_shape=input_shape))
@@ -20,7 +33,7 @@ def train_model(model, X_train, y_train, epochs=50):
     model.compile(optimizer='adam', loss='mean_squared_error')
     history = model.fit(X_train, y_train, epochs=epochs, batch_size=32, validation_split=0.2, verbose=1)
     vis.plot_model_history(history)
-    # Izris zgodovine učenja
+    save_train_metrics(history, "./reports/train_metrics.txt")
 
 def create_multivariate_dataset_with_steps(time_series, look_back=1, step=1):
     X, y = [], []
@@ -90,6 +103,9 @@ def main():
     lstm_model_adv = build_lstm_model(input_shape)
     train_model(lstm_model_adv, X_train, y_train, epochs=30)
 
+
+
+
     y_test_pred_lstm_adv = lstm_model_adv.predict(X_test)
 
     y_test_true = stands_scaler.inverse_transform(y_test.reshape(-1, 1))
@@ -100,7 +116,7 @@ def main():
     lstm_mae_adv, lstm_mse_adv, lstm_evs_adv = calc.calculate_metrics(y_test_true, y_test_pred_lstm_adv)
     print("\nLSTM Model Metrics:")
     print(f"MAE: {lstm_mae_adv}, MSE: {lstm_mse_adv}, EVS: {lstm_evs_adv}")
-
+    save_test_metrics(lstm_mae_adv, lstm_mse_adv, lstm_evs_adv, "./reports/metrics.txt")
     dates = all_data['date'][:-look_back][-len(y_test):]
     train_dates =  all_data['date'][:len(train_data)]
 
