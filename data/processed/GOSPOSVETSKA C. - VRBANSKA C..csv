@@ -1,3 +1,3 @@
-name,position,bike_stands,available_bike_stands,available_bikes,last_update,date
-GOSPOSVETSKA C. - VRBANSKA C.,"{'lat': 46.561422, 'lng': 15.637118}",22,7,15,1710241555000,2024-03-12 12:13:51
-GOSPOSVETSKA C. - VRBANSKA C.,"{'lat': 46.561422, 'lng': 15.637118}",22,7,15,1710242160000,2024-03-12 12:17:33
+date,bike_stands,available_bike_stands,temperature,relative_humidity,dew_point,apparent_temperature,precipitation_probability,rain,surface_pressure
+20240404_200412,22,7,17.100000381469727,47.0,5.694956302642822,16.032119750976562,0.0,0.0,981.9596557617188
+20240404_200616,22,5,17.100000381469727,47.0,5.694956302642822,16.032119750976562,0.0,0.0,981.9596557617188

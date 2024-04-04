@@ -1,3 +1,3 @@
-name,position,bike_stands,available_bike_stands,available_bikes,last_update,date
-MLINSKA UL . - AVTOBUSNA POSTAJA,"{'lat': 46.558534, 'lng': 15.654739}",20,18,2,1710241519000,2024-03-12 12:13:51
-MLINSKA UL . - AVTOBUSNA POSTAJA,"{'lat': 46.558534, 'lng': 15.654739}",20,18,2,1710242124000,2024-03-12 12:17:33
+date,bike_stands,available_bike_stands,temperature,relative_humidity,dew_point,apparent_temperature,precipitation_probability,rain,surface_pressure
+20240404_200412,20,4,15.399999618530273,55.0,6.4028143882751465,13.762483596801758,0.0,0.0,982.7750244140625
+20240404_200616,20,4,15.399999618530273,55.0,6.4028143882751465,13.762483596801758,0.0,0.0,982.7750244140625

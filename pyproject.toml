@@ -18,6 +18,9 @@ flask = "^3.0.2"
 requests = "^2.31.0"
 scikit-learn = "^1.4.1.post1"
 datetime = "^5.4"
+openmeteo-requests = "^1.2.0"
+requests-cache = "^1.2.0"
+retry-requests = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
@@ -28,6 +31,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 serve = "src.serve.serve:main"
-data = "src.data.data:main"
+mbike_data = "src.data.mbike_data:main"
+weather_data = "src.data.weather_data:main"
 train = "src.models.train:main"
 
