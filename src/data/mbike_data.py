@@ -62,9 +62,10 @@ def main():
         data = fetch_data(api_url)
         if data:
 
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            timestamp_filename = timestamp.replace(" ", "_").replace(":", "-")
             # Save raw data
-            raw_filename = 'data/raw/mbajk/bike_data_' + timestamp + '.json'
+            raw_filename = 'data/raw/mbajk/bike_data_' + timestamp_filename + '.json'
             save_raw_data(data, raw_filename)
 
         
@@ -76,7 +77,7 @@ def main():
                 filename = 'data/processed/' + station['name'] + '.csv'
                 weather_data.append(save_to_csv(station, filename, timestamp))
             
-            save_raw_data(weather_data, 'data/raw/weather/weather_data_' + timestamp + '.json')
+            save_raw_data(weather_data, 'data/raw/weather/weather_data_' + timestamp_filename + '.json')
     except requests.RequestException as e:
         print(f"An error occurred: {e}")
 
