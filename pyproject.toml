@@ -34,4 +34,5 @@ serve = "src.serve.serve:main"
 mbike_data = "src.data.mbike_data:main"
 weather_data = "src.data.weather_data:main"
 train = "src.models.train:main"
+train_all = "src.models.train_all_models:main"
 

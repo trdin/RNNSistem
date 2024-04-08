@@ -21,8 +21,8 @@ def save_raw_data(data, filename):
     print("Raw data saved to", filename)
 
 # Function to save data to CSV
-def save_to_csv(station, filename, timestamp):
-    weather_data = wd.fetch_and_write_weather_data(station['position']['lat'], station['position']['lng'], 'data/raw/weather/weather_data_' + station['name'] + '.json', timestamp=timestamp)
+def save_to_csv(station, filename, station_number ,timestamp):
+    weather_data = wd.fetch_and_write_weather_data(station['position']['lat'], station['position']['lng'], station_number , timestamp=timestamp)
     columns = ["date", "bike_stands", "available_bike_stands", "temperature", 
                "relative_humidity", "dew_point", "apparent_temperature", 
                "precipitation_probability", "rain", "surface_pressure"]
@@ -74,8 +74,8 @@ def main():
 
             # Save processed data to CSV
             for station in data:
-                filename = 'data/processed/' + station['name'] + '.csv'
-                weather_data.append(save_to_csv(station, filename, timestamp))
+                filename = 'data/processed/station_' + str(station['number']) + '.csv'
+                weather_data.append(save_to_csv(station, filename, station['number'], timestamp))
             
             save_raw_data(weather_data, 'data/raw/weather/weather_data_' + timestamp_filename + '.json')
     except requests.RequestException as e:

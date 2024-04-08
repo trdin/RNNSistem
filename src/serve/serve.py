@@ -25,6 +25,14 @@ def predict_air():
     result = predict(data)
     return jsonify(result)
 
+@app.route('/predict/<int:station_id>', methods=['GET'])
+def get_model(station_id):
+    return jsonify( pred.predict_station(station_name="station_"+station_id, station_number=station_id))
+
+    
+    
+
+
 def main():
     app.run(host='0.0.0.0', port=123)
 

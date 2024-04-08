@@ -35,16 +35,20 @@ def information_gain(all_data):
     selected_features = info_gain_df[info_gain_df['Information_Gain'] >= threshold]['Feature']
     return selected_features
 
-def prepare_data():
-    all_data = pd.read_csv("./data/raw/mbajk_dataset.csv")
+def prepare_data(path_to_data):
+    all_data = pd.read_csv(path_to_data)
     print(all_data.head())
 
-    all_data['date'] = pd.to_datetime(all_data['date'])
-    all_data.sort_values(by='date', inplace=True)
 
 
     all_data['date'] = pd.to_datetime(all_data['date'])
     all_data.sort_values(by='date', inplace=True)
+
+    all_data.set_index('date', inplace=True)
+    all_data = all_data.resample('H').mean()
+    all_data.reset_index(inplace=True)
+    all_data = all_data.dropna()
+
     features = ['available_bike_stands', 'temperature', 'relative_humidity',
                 'apparent_temperature', 'dew_point', 'precipitation_probability',
                 'surface_pressure','bike_stands', 'rain']
@@ -83,23 +87,6 @@ def prepare_data():
    
 
 
-    all_data.set_index('date', inplace=True)
-
-    # Izberemo časovni interval (npr. 1 ura)
-    time_interval = '1h'
-
-    # Agregiramo podatke na izbrani časovni interval
-    aggregated_data = all_data.resample(time_interval).mean()
-
-    # Ponovno nastavimo stolpec 'date' kot stolpec v dataframe-u
-    aggregated_data.reset_index(inplace=True)
-    all_data = aggregated_data
-    all_data.dropna(inplace=True)
-    all_data.isnull().sum()
-
-  
-    printSkew(all_data)
-
     left_skew_columns = ["surface_pressure"]
     for col in left_skew_columns:
         all_data[col] = np.square(all_data[col])
@@ -108,11 +95,17 @@ def prepare_data():
     for col in right_skew_columns:
         all_data[col] = np.log(all_data[col]+1 )
 
-    selected_features = information_gain(all_data)
+    """ selected_features = information_gain(all_data)
 
     print("Selected Features:")
     print(selected_features)
-
+ """
+    selected_features = ['temperature',
+        'apparent_temperature',
+        'surface_pressure',
+        'dew_point',
+        'precipitation_probability',
+        'relative_humidity', "rain"]
 
     learn_features = all_data[ ['available_bike_stands']+ list(selected_features)]
     learn_features = learn_features.values

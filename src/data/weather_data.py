@@ -5,8 +5,7 @@ from retry_requests import retry
 from datetime import datetime
 
 
-def fetch_and_write_weather_data(latitude, longitude, filename, timestamp):
-    print(latitude, longitude, filename)
+def fetch_and_write_weather_data(latitude, longitude, station_number, timestamp):
     cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
     retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
     openmeteo = openmeteo_requests.Client(session = retry_session)
@@ -14,6 +13,7 @@ def fetch_and_write_weather_data(latitude, longitude, filename, timestamp):
 
     # Define the parameters for the weather data request
     params = {
+        "time": timestamp,
         "latitude": latitude,
         "longitude": longitude,
         "current": ["temperature_2m", "relative_humidity_2m", "dew_point_2m",
@@ -32,6 +32,7 @@ def fetch_and_write_weather_data(latitude, longitude, filename, timestamp):
     # Extract hourly data
     current = response.Current()
     hourly_data = {
+        "station_number": station_number,
         "date": timestamp,
         "temperature": current.Variables(0).Value(),
         "relative_humidity": current.Variables(1).Value(),
