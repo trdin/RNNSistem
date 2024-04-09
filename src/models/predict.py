@@ -133,7 +133,7 @@ def predict_station(station_name, station_number):
     for i in range(7):
 
         prediction = only_predict(data.copy(), model, stands_scaler, other_scaler)
-        predctions.append(prediction[0][0])
+        predctions.append(float(prediction[0][0]))
 
         if(i == 6):
             break
@@ -160,8 +160,6 @@ def predict_station(station_name, station_number):
         if len(data) > 24:
             data = data.iloc[1:]
 
-    print(len(predctions))
-    print(predctions)
     return predctions
     
 
@@ -189,7 +187,6 @@ def get_station_location(station_number):
     return None, None
 
 
-predict_station("station_3", 3)
 
 
 

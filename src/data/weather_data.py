@@ -26,7 +26,6 @@ def fetch_and_write_weather_data(latitude, longitude, station_number, timestamp)
     # Process the first response (assuming you're interested in the first location)
     response = responses[0]
 
-    print(response)
 
     # Extract hourly data
     current = response.Current()
@@ -72,7 +71,6 @@ def forcast_data(latitude, longitude, station_number):
     # Process the first response (assuming you're interested in the first location)
     response = responses[0]
 
-    print(response)
 
     # Extract hourly data
     current = response.Hourly()

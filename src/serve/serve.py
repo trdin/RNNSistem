@@ -27,7 +27,7 @@ def predict_air():
 
 @app.route('/predict/<int:station_id>', methods=['GET'])
 def get_model(station_id):
-    return jsonify( pred.predict_station(station_name="station_"+station_id, station_number=station_id))
+    return jsonify( pred.predict_station(station_name="station_"+str(station_id), station_number=station_id))
 
     
     
