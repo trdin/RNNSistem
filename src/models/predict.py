@@ -84,12 +84,10 @@ def only_predict(data, model, stands_scaler, other_scaler):
 
     stands = np.array(learn_features[:,0])
 
-    print("stands scaler")
 
 
     stands_normalized = stands_scaler.transform(stands.reshape(-1, 1))
 
-    print("other scaler")
 
     other = np.array(learn_features[:,1:])
     other_normalized = other_scaler.transform(other)
@@ -112,9 +110,6 @@ def predict_station(station_name, station_number):
     stands_scaler = joblib.load('./models/'+station_name+'/stands_scaler.joblib')
     other_scaler = joblib.load('./models/'+station_name+'/other_scaler.joblib')
 
-    
-
-
     data = pd.read_csv('./data/processed/'+station_name+'.csv')
     data['date'] = pd.to_datetime(data['date'])
     data = data.sort_values(by=['date'])
@@ -130,45 +125,48 @@ def predict_station(station_name, station_number):
     for col in right_skew_columns:
         data[col] = np.log(data[col]+1 )
 
+    latitude , longitude = get_station_location(station_number)
+
+    weather_data = w.forcast_data(latitude, longitude, station_number)
+
+    predctions = []
+    for i in range(7):
+
+        prediction = only_predict(data.copy(), model, stands_scaler, other_scaler)
+        predctions.append(prediction[0][0])
+
+        if(i == 6):
+            break
 
 
-    prediction = only_predict(data, model, stands_scaler, other_scaler)
+        last_data = data.tail(1)
 
-    last_data = data.tail(1)
+        station_data = {
+            "temperature": weather_data["temperature"][i], 
+            "relative_humidity": weather_data["relative_humidity"][i],
+            "dew_point": weather_data["dew_point"][i],
+            "apparent_temperature": weather_data["apparent_temperature"][i],
+            "precipitation_probability":  np.log(weather_data["precipitation_probability"][i]+1 ),
+            "rain": np.log( weather_data["rain"][i]+1 ),
+            "surface_pressure": np.square(weather_data["surface_pressure"][i]),
+            "bike_stands": last_data["bike_stands"].values[0],
+            "available_bike_stands": prediction[0][0]
+        }
+
+        station_df = pd.DataFrame(station_data, index=[0])
+
+        data = pd.concat([data, station_df], ignore_index=True)
+
+        if len(data) > 24:
+            data = data.iloc[1:]
+
+    print(len(predctions))
+    print(predctions)
+    return predctions
+    
 
     
 
-    latitude , longitude = get_station_location(station_number)
-
-
-    new_datetime = last_data['date'].values[0] #add the correnct time 
-    weather_data = w.fetch_and_write_weather_data(latitude, longitude, station_number, new_datetime)
-
-    weather_data = json.loads(weather_data)
-
-    print(weather_data)
-
-    station_data = {
-        "date": new_datetime,
-        "temperature": weather_data["temperature"], 
-        "relative_humidity": weather_data["relative_humidity"],
-        "dew_point": weather_data["dew_point"],
-        "apparent_temperature": weather_data["apparent_temperature"],
-        "precipitation_probability":  np.log(weather_data["precipitation_probability"]+1 ),
-        "rain": np.log( weather_data["rain"]+1 ),
-        "surface_pressure": np.square(weather_data["surface_pressure"]),
-        "bike_stands": last_data["bike_stands"].values[0],
-        "available_bike_stands": prediction[0][0]
-    }
-
-    # Append the new row to the data DataFrame
-
-
-
-    data = data.append(station_data, ignore_index=True)
-
-    if len(data) > 24:
-        data = data.iloc[1:]
 
 
 
