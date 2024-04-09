@@ -75,6 +75,7 @@ def main():
             # Save processed data to CSV
             for station in data:
                 filename = 'data/processed/station_' + str(station['number']) + '.csv'
+            
                 weather_data.append(save_to_csv(station, filename, station['number'], timestamp))
             
             save_raw_data(weather_data, 'data/raw/weather/weather_data_' + timestamp_filename + '.json')
