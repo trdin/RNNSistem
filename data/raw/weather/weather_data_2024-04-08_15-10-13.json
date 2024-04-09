@@ -1,0 +1,292 @@
+[
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.899999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.716651916503906,
+        "apparent_temperature": 25.018054962158203,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 981.8339233398438
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.34858512878418,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 983.3237915039062
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.34858512878418,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.76806640625
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.700000762939453,
+        "relative_humidity": 36.0,
+        "dew_point": 10.395464897155762,
+        "apparent_temperature": 24.753326416015625,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 983.3850708007812
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.799999237060547,
+        "relative_humidity": 36.0,
+        "dew_point": 10.483736991882324,
+        "apparent_temperature": 24.879079818725586,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 984.620849609375
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.34858512878418,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 983.101318359375
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.835708618164062,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.3236694335938
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.34858512878418,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 983.101318359375
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.149999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.935824394226074,
+        "apparent_temperature": 25.28615379333496,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.4295654296875
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.149999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.935824394226074,
+        "apparent_temperature": 25.28615379333496,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.3184814453125
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.34858512878418,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 983.101318359375
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.899999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.716651916503906,
+        "apparent_temperature": 25.018054962158203,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.2783813476562
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.149999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.935824394226074,
+        "apparent_temperature": 25.28615379333496,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.3184814453125
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.649999618530273,
+        "relative_humidity": 36.0,
+        "dew_point": 10.351322174072266,
+        "apparent_temperature": 24.69049644470215,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.6004638671875
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.899999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.716651916503906,
+        "apparent_temperature": 25.018054962158203,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.3895874023438
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.835708618164062,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 981.9906005859375
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.25,
+        "relative_humidity": 34.0,
+        "dew_point": 10.02348804473877,
+        "apparent_temperature": 25.41104507446289,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 984.2186279296875
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.649999618530273,
+        "relative_humidity": 36.0,
+        "dew_point": 10.351322174072266,
+        "apparent_temperature": 24.69049644470215,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.2667236328125
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.649999618530273,
+        "relative_humidity": 36.0,
+        "dew_point": 10.351322174072266,
+        "apparent_temperature": 24.69049644470215,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.7119750976562
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.149999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.935824394226074,
+        "apparent_temperature": 25.28615379333496,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.540771484375
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.149999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.935824394226074,
+        "apparent_temperature": 25.28615379333496,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.207275390625
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.700000762939453,
+        "relative_humidity": 36.0,
+        "dew_point": 10.395464897155762,
+        "apparent_temperature": 24.753326416015625,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 983.2738647460938
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.299999237060547,
+        "relative_humidity": 34.0,
+        "dew_point": 10.067315101623535,
+        "apparent_temperature": 25.47353744506836,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 984.4462280273438
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.899999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.716651916503906,
+        "apparent_temperature": 25.018054962158203,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.3895874023438
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.5,
+        "relative_humidity": 36.0,
+        "dew_point": 10.218904495239258,
+        "apparent_temperature": 25.627336502075195,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.207763671875
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.899999618530273,
+        "relative_humidity": 34.0,
+        "dew_point": 9.716651916503906,
+        "apparent_temperature": 25.018054962158203,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.6118774414062
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.850000381469727,
+        "relative_humidity": 36.0,
+        "dew_point": 10.527875900268555,
+        "apparent_temperature": 24.94200897216797,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 985.5181274414062
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 27.200000762939453,
+        "relative_humidity": 34.0,
+        "dew_point": 9.979658126831055,
+        "apparent_temperature": 25.835708618164062,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.4348754882812
+    },
+    {
+        "date": "2024-04-08 15:10:13",
+        "temperature": 26.649999618530273,
+        "relative_humidity": 36.0,
+        "dew_point": 10.351322174072266,
+        "apparent_temperature": 24.69049644470215,
+        "precipitation_probability": 0.0,
+        "rain": 0.0,
+        "surface_pressure": 982.7119750976562
+    }
+]
