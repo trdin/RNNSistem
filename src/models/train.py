@@ -61,13 +61,12 @@ def ensure_directory_exists(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-def train(data_path, station_name, test = False):
+def train(data_path, station_name, test = False,windowsize = 24, test_size_multiplier = 10):
 
     learn_features, all_data = pld.prepare_data(data_path)
 
 
-    windowsize = 24
-    train_size = len(learn_features) - 384 - windowsize
+    train_size = len(learn_features) - windowsize * test_size_multiplier
     train_data, test_data = learn_features[:train_size], learn_features[train_size:]
 
 

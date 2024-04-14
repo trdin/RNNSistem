@@ -21,6 +21,7 @@ datetime = "^5.4"
 openmeteo-requests = "^1.2.0"
 requests-cache = "^1.2.0"
 retry-requests = "^2.0.0"
+flask-cors = "^4.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"

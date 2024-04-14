@@ -104,7 +104,7 @@ def only_predict(data, model, stands_scaler, other_scaler):
     prediction =  stands_scaler.inverse_transform(prediction)
     return prediction
 
-def predict_station(station_name, station_number):
+def predict_station(station_name, station_number, windowsize=24):
 
     model = tf.keras.models.load_model('./models/'+station_name+'/model.h5')
     stands_scaler = joblib.load('./models/'+station_name+'/stands_scaler.joblib')
@@ -114,7 +114,7 @@ def predict_station(station_name, station_number):
     data['date'] = pd.to_datetime(data['date'])
     data = data.sort_values(by=['date'])
 
-    data = data.tail(24)
+    data = data.tail(windowsize)
 
 
     left_skew_columns = ["surface_pressure"]
@@ -157,7 +157,7 @@ def predict_station(station_name, station_number):
 
         data = pd.concat([data, station_df], ignore_index=True)
 
-        if len(data) > 24:
+        if len(data) > windowsize:
             data = data.iloc[1:]
 
     return predctions
@@ -185,7 +185,6 @@ def get_station_location(station_number):
         if station["number"] == station_number:
             return station["position"]["lat"], station["position"]["lng"]
     return None, None
-
 
 
 
