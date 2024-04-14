@@ -34,7 +34,7 @@ RUN poetry install --no-interaction
 COPY . /code
 
 # Expose the port the app runs on
-EXPOSE 123
+EXPOSE 3001
 
 # Command to run the application
 CMD ["poetry", "run", "serve"]
