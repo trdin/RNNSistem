@@ -37,9 +37,6 @@ def merge_and_save_data(weather_data_file, station_data_file, output_directory):
             merged_data[station_number] = station_entry
     
 
-    with open("testdata.json", "w") as output_file:
-        json.dump(merged_data, output_file, indent=4)
-
     
     for station_number, data in merged_data.items():
         filename = os.path.join(output_directory, f'station_{station_number}.csv')

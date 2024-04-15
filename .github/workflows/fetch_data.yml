@@ -1,109 +1,345 @@
-name: Fetch weather and mbajk data
+name: Fetch and Process Data
 
 on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  fetch_mbajk_data:
+  test_apis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+
+      - run: poetry install --no-interaction
+
+      - name: Test APIs
+        run: |
+          poetry run python tests/mbajk_api_test.py
+          poetry run python tests/weather_api_test.py
+
+  fetch_bike_data:
+    needs: test_apis
     runs-on: ubuntu-latest
 
     permissions:
       contents: write
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
 
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-        
-    - name: cache poetry install
-      uses: actions/cache@v2
-      with:
-        path: ~/.local
-        key: poetry-1.1.12-0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
 
-    # Install Poetry. You could do this manually, or there are several actions that do this.
-    # `snok/install-poetry` seems to be minimal yet complete, and really just calls out to
-    # Poetry's default install script, which feels correct. I pin the Poetry version here
-    # because Poetry does occasionally change APIs between versions and I don't want my
-    # actions to break if it does.
-    #
-    # The key configuration value here is `virtualenvs-in-project: true`: this creates the
-    # venv as a `.venv` in your testing directory, which allows the next step to easily
-    # cache it.
-    - uses: snok/install-poetry@v1
-      with:
-        version: 1.8.2
-        virtualenvs-create: true
-        virtualenvs-in-project: true
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
 
-    # Cache your dependencies (i.e. all the stuff in your `pyproject.toml`). Note the cache
-    # key: if you're using multiple Python versions, or multiple OSes, you'd need to include
-    # them in the cache key. I'm not, so it can be simple and just depend on the poetry.lock.
-    - name: cache deps
-      id: cache-deps
-      uses: actions/cache@v2
-      with:
-        path: .venv
-        key: pydeps-${{ hashFiles('**/poetry.lock') }}
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
-    # Install dependencies. `--no-root` means "install all dependencies but not the project
-    # itself", which is what you want to avoid caching _your_ code. The `if` statement
-    # ensures this only runs on a cache miss.
-    - run: poetry install --no-interaction --no-root
-      if: steps.cache-deps.outputs.cache-hit != 'true'
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
 
-    # Now install _your_ project. This isn't necessary for many types of projects -- particularly
-    # things like Django apps don't need this. But it's a good idea since it fully-exercises the
-    # pyproject.toml and makes that if you add things like console-scripts at some point that
-    # they'll be installed and working.
-    - run: poetry install --no-interaction
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
 
-    - name: Setup DVC
-      uses: iterative/setup-dvc@v1
+      - run: poetry install --no-interaction
 
-    - name: Setup Dagshub
-      run: |
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+
+      - name: Setup Dagshub
+        run: |
           poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
           poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
           poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
-      
-    - name: Pull data
-      run: |
-        poetry run dvc pull -r origin
 
-    - name: unprotect
-      run: |
-        poetry run dvc unprotect data
+      - name: Pull data
+        run: |
+          poetry run dvc pull -r origin
 
-    - name: Fetch mike data
-      run: |
-        poetry run fetch_mbike
-        
-    - name: Preprocess mike data
-      run: |
-        poetry run preprocess_mbike
+      - name: Unprotect
+        run: |
+          poetry run dvc unprotect data
 
-    - name: Fetch weather data
-      run: |
-        poetry run fetch_weather
+      - name: Fetch bike data
+        run: poetry run fetch_mbike
 
-    - name: merge data
-      run: |
-        poetry run merge_data
+      - name: Add data to DVC
+        run: |
+          poetry run dvc add data
 
-    - name: add data
-      run: |
-        poetry run dvc add data
+      - name: DVC push
+        run: |
+          poetry run dvc push -r origin
 
-    - name: Push data
-      run: |
-        poetry run dvc push -r origin
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update data dvc
 
-    - uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: Automated bike data dvc
+  preprocess_bike_data:
+    needs: fetch_bike_data
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+
+      - run: poetry install --no-interaction
+
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+  
+      - name: Setup Dagshub
+        run: |
+          poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+          poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+          poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Pull data
+        run: |
+          poetry run dvc pull -r origin
+
+      - name: Unprotect
+        run: |
+          poetry run dvc unprotect data
+
+      - name: Preprocess bike data
+        run: poetry run preprocess_mbike
+
+      - name: Add data to DVC
+        run: |
+          poetry run dvc add data
+
+      - name: DVC push
+        run: |
+          poetry run dvc push -r origin
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update data dvc
+
+  fetch_weather_data:
+    needs: preprocess_bike_data
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+
+      - run: poetry install --no-interaction
+
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+  
+      - name: Setup Dagshub
+        run: |
+          poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+          poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+          poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Pull data
+        run: |
+          poetry run dvc pull -r origin
+
+      - name: Unprotect
+        run: |
+          poetry run dvc unprotect data
+
+      - name: Fetch weather data
+        run: poetry run fetch_weather
+
+      - name: Add data to DVC
+        run: |
+          poetry run dvc add data
+
+      - name: DVC push
+        run: |
+          poetry run dvc push -r origin
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update data dvc
+
+  
+  merge_data:
+    needs: fetch_weather_data
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+
+      - run: poetry install --no-interaction
+
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+  
+      - name: Setup Dagshub
+        run: |
+          poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+          poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+          poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Pull data
+        run: |
+          poetry run dvc pull -r origin
+
+      - name: Unprotect
+        run: |
+          poetry run dvc unprotect data
+
+      - name: Merge processed data
+        run: poetry run merge_data
+
+      - name: Add data to DVC
+        run: |
+          poetry run dvc add data
+
+      - name: DVC push
+        run: |
+          poetry run dvc push -r origin
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update data dvc
