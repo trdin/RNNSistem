@@ -76,6 +76,10 @@ jobs:
       run: |
         poetry run dvc pull -r origin
 
+    - name: unprotect
+      run: |
+        poetry run dvc unprotect data
+
     - name: Fetch mike data
       run: |
         poetry run fetch_mbike
@@ -91,6 +95,10 @@ jobs:
     - name: merge data
       run: |
         poetry run merge_data
+
+    - name: Push data
+      run: |
+        poetry run dvc add data
 
     - name: Push data
       run: |
