@@ -104,8 +104,6 @@ jobs:
       run: |
         poetry run dvc push -r origin
 
-    - name: git commit 
-      run: |
-        git add data.dvc
-        git commit -m "modify train data"
-        git push
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Automated bike data dvc
