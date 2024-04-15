@@ -96,10 +96,16 @@ jobs:
       run: |
         poetry run merge_data
 
-    - name: Push data
+    - name: add data
       run: |
         poetry run dvc add data
 
     - name: Push data
       run: |
         poetry run dvc push -r origin
+
+    - name: git commit 
+      run: |
+        git add data.dvc
+        git commit -m "modify train data"
+        git push
