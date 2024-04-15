@@ -68,7 +68,7 @@ jobs:
     - run: poetry install --no-interaction
 
     - name: Setup DVC
-        uses: iterative/setup-dvc@v1
+      uses: iterative/setup-dvc@v1
 
     - name: Setup Dagshub
       run: |
