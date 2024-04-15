@@ -4,8 +4,6 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import mutual_info_regression
 
-#TODO  write to file metrics 
-#TODO dockerize
 
 def printSkew(all_data):
     skewness_info = []

@@ -46,7 +46,7 @@ def fetch_and_write_weather_data(latitude, longitude, station_number, timestamp)
 
 
 
-    return json_data
+    return hourly_data
 
 
 
