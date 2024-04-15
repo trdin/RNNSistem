@@ -74,7 +74,7 @@ jobs:
       
     - name: Pull data
       run: |
-        poetry run dvc pull
+        poetry run dvc pull -r origin
 
     
     - name: Fetch data
