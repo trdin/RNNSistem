@@ -63,12 +63,25 @@ jobs:
     # they'll be installed and working.
     - run: poetry install --no-interaction
 
+    - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+
+    - name: Setup Dagshub
+        run: |
+          poetry run dvc remote add origin s3://dvc
+          poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+          poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+          poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+      
+    - name: Pull data
+      run: |
+        poetry run dvc pull
+
     
     - name: Fetch data
       run: |
         poetry run mbike_data
 
-    - name: Push fetched data to GitHub
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: Fetch mbajk and weather data
+    - name: Push data
+      run: |
+        poetry run dvc push
