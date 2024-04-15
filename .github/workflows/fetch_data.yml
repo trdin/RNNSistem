@@ -64,10 +64,10 @@ jobs:
     - run: poetry install --no-interaction
 
     - name: Setup DVC
-        uses: iterative/setup-dvc@v1
+      uses: iterative/setup-dvc@v1
 
     - name: Setup Dagshub
-        run: |
+      run: |
           poetry run dvc remote add origin s3://dvc
           poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
           poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
