@@ -1,7 +1,7 @@
 {
     "24": {
         "station_number": 24,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.350000381469727,
         "relative_humidity": 29.0,
         "dew_point": 5.170595645904541,
@@ -10,11 +10,11 @@
         "rain": 0.0,
         "surface_pressure": 972.7545776367188,
         "bike_stands": 20,
-        "available_bike_stands": 12
+        "available_bike_stands": 10
     },
     "10": {
         "station_number": 10,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.200000762939453,
         "relative_humidity": 27.0,
         "dew_point": 4.8733086585998535,
@@ -23,11 +23,11 @@
         "rain": 0.0,
         "surface_pressure": 974.4928588867188,
         "bike_stands": 20,
-        "available_bike_stands": 14
+        "available_bike_stands": 19
     },
     "9": {
         "station_number": 9,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -36,11 +36,11 @@
         "rain": 0.0,
         "surface_pressure": 973.93310546875,
         "bike_stands": 20,
-        "available_bike_stands": 10
+        "available_bike_stands": 7
     },
     "13": {
         "station_number": 13,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.649999618530273,
         "relative_humidity": 29.0,
         "dew_point": 5.429078578948975,
@@ -49,11 +49,11 @@
         "rain": 0.0,
         "surface_pressure": 974.6453247070312,
         "bike_stands": 20,
-        "available_bike_stands": 11
+        "available_bike_stands": 12
     },
     "20": {
         "station_number": 20,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.75,
         "relative_humidity": 29.0,
         "dew_point": 5.515233039855957,
@@ -62,11 +62,11 @@
         "rain": 0.0,
         "surface_pressure": 975.8787841796875,
         "bike_stands": 21,
-        "available_bike_stands": 3
+        "available_bike_stands": 2
     },
     "4": {
         "station_number": 4,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -79,7 +79,7 @@
     },
     "1": {
         "station_number": 1,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.799999237060547,
         "relative_humidity": 27.0,
         "dew_point": 4.531593322753906,
@@ -88,11 +88,11 @@
         "rain": 0.0,
         "surface_pressure": 973.259765625,
         "bike_stands": 22,
-        "available_bike_stands": 8
+        "available_bike_stands": 10
     },
     "16": {
         "station_number": 16,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -101,11 +101,11 @@
         "rain": 0.0,
         "surface_pressure": 974.2659301757812,
         "bike_stands": 20,
-        "available_bike_stands": 7
+        "available_bike_stands": 8
     },
     "3": {
         "station_number": 3,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -114,11 +114,11 @@
         "rain": 0.0,
         "surface_pressure": 973.6005249023438,
         "bike_stands": 20,
-        "available_bike_stands": 16
+        "available_bike_stands": 12
     },
     "21": {
         "station_number": 21,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -127,11 +127,11 @@
         "rain": 0.0,
         "surface_pressure": 973.4896850585938,
         "bike_stands": 20,
-        "available_bike_stands": 20
+        "available_bike_stands": 14
     },
     "6": {
         "station_number": 6,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -140,11 +140,11 @@
         "rain": 0.0,
         "surface_pressure": 974.2659301757812,
         "bike_stands": 20,
-        "available_bike_stands": 20
+        "available_bike_stands": 10
     },
     "22": {
         "station_number": 22,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.399999618530273,
         "relative_humidity": 29.0,
         "dew_point": 5.213675498962402,
@@ -157,7 +157,7 @@
     },
     "14": {
         "station_number": 14,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -166,11 +166,11 @@
         "rain": 0.0,
         "surface_pressure": 973.4896850585938,
         "bike_stands": 20,
-        "available_bike_stands": 19
+        "available_bike_stands": 20
     },
     "19": {
         "station_number": 19,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.600000381469727,
         "relative_humidity": 29.0,
         "dew_point": 5.386003017425537,
@@ -179,11 +179,11 @@
         "rain": 0.0,
         "surface_pressure": 973.86279296875,
         "bike_stands": 20,
-        "available_bike_stands": 8
+        "available_bike_stands": 3
     },
     "25": {
         "station_number": 25,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.399999618530273,
         "relative_humidity": 29.0,
         "dew_point": 5.213675498962402,
@@ -192,11 +192,11 @@
         "rain": 0.0,
         "surface_pressure": 973.31494140625,
         "bike_stands": 20,
-        "available_bike_stands": 8
+        "available_bike_stands": 11
     },
     "17": {
         "station_number": 17,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.799999237060547,
         "relative_humidity": 27.0,
         "dew_point": 4.531593322753906,
@@ -205,11 +205,11 @@
         "rain": 0.0,
         "surface_pressure": 972.927001953125,
         "bike_stands": 20,
-        "available_bike_stands": 0
+        "available_bike_stands": 11
     },
     "28": {
         "station_number": 28,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.25,
         "relative_humidity": 27.0,
         "dew_point": 4.916018486022949,
@@ -218,11 +218,11 @@
         "rain": 0.0,
         "surface_pressure": 975.3855590820312,
         "bike_stands": 20,
-        "available_bike_stands": 16
+        "available_bike_stands": 18
     },
     "8": {
         "station_number": 8,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.600000381469727,
         "relative_humidity": 29.0,
         "dew_point": 5.386003017425537,
@@ -231,11 +231,11 @@
         "rain": 0.0,
         "surface_pressure": 973.529541015625,
         "bike_stands": 20,
-        "available_bike_stands": 6
+        "available_bike_stands": 14
     },
     "7": {
         "station_number": 7,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.600000381469727,
         "relative_humidity": 29.0,
         "dew_point": 5.386003017425537,
@@ -244,11 +244,11 @@
         "rain": 0.0,
         "surface_pressure": 973.9735107421875,
         "bike_stands": 20,
-        "available_bike_stands": 11
+        "available_bike_stands": 16
     },
     "2": {
         "station_number": 2,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.149999618530273,
         "relative_humidity": 27.0,
         "dew_point": 4.830596923828125,
@@ -257,11 +257,11 @@
         "rain": 0.0,
         "surface_pressure": 973.7113037109375,
         "bike_stands": 22,
-        "available_bike_stands": 21
+        "available_bike_stands": 7
     },
     "5": {
         "station_number": 5,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.100000381469727,
         "relative_humidity": 27.0,
         "dew_point": 4.787889003753662,
@@ -270,11 +270,11 @@
         "rain": 0.0,
         "surface_pressure": 973.373779296875,
         "bike_stands": 16,
-        "available_bike_stands": 16
+        "available_bike_stands": 7
     },
     "12": {
         "station_number": 12,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.649999618530273,
         "relative_humidity": 29.0,
         "dew_point": 5.429078578948975,
@@ -287,7 +287,7 @@
     },
     "29": {
         "station_number": 29,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 25.25,
         "relative_humidity": 27.0,
         "dew_point": 4.916018486022949,
@@ -296,11 +296,11 @@
         "rain": 0.0,
         "surface_pressure": 975.6077270507812,
         "bike_stands": 20,
-        "available_bike_stands": 15
+        "available_bike_stands": 17
     },
     "15": {
         "station_number": 15,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.399999618530273,
         "relative_humidity": 29.0,
         "dew_point": 5.213675498962402,
@@ -309,11 +309,11 @@
         "rain": 0.0,
         "surface_pressure": 973.31494140625,
         "bike_stands": 20,
-        "available_bike_stands": 15
+        "available_bike_stands": 19
     },
     "26": {
         "station_number": 26,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.149999618530273,
         "relative_humidity": 30.0,
         "dew_point": 5.486116409301758,
@@ -322,11 +322,11 @@
         "rain": 0.0,
         "surface_pressure": 972.9554443359375,
         "bike_stands": 20,
-        "available_bike_stands": 9
+        "available_bike_stands": 10
     },
     "23": {
         "station_number": 23,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.399999618530273,
         "relative_humidity": 29.0,
         "dew_point": 5.213675498962402,
@@ -335,11 +335,11 @@
         "rain": 0.0,
         "surface_pressure": 973.5370483398438,
         "bike_stands": 20,
-        "available_bike_stands": 14
+        "available_bike_stands": 12
     },
     "27": {
         "station_number": 27,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.799999237060547,
         "relative_humidity": 29.0,
         "dew_point": 5.558305740356445,
@@ -348,11 +348,11 @@
         "rain": 0.0,
         "surface_pressure": 976.7740478515625,
         "bike_stands": 20,
-        "available_bike_stands": 11
+        "available_bike_stands": 9
     },
     "18": {
         "station_number": 18,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.799999237060547,
         "relative_humidity": 27.0,
         "dew_point": 4.531593322753906,
@@ -361,11 +361,11 @@
         "rain": 0.0,
         "surface_pressure": 973.3705444335938,
         "bike_stands": 20,
-        "available_bike_stands": 4
+        "available_bike_stands": 1
     },
     "11": {
         "station_number": 11,
-        "date": "2024-04-15 15:22:57",
+        "date": "2024-04-15 16:17:06",
         "temperature": 24.600000381469727,
         "relative_humidity": 29.0,
         "dew_point": 5.386003017425537,
