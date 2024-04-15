@@ -76,10 +76,21 @@ jobs:
       run: |
         poetry run dvc pull -r origin
 
-    
-    - name: Fetch data
+    - name: Fetch mike data
       run: |
-        poetry run mbike_data
+        poetry run fetch_mbike
+        
+    - name: Preprocess mike data
+      run: |
+        poetry run preprocess_mbike
+
+    - name: Fetch weather data
+      run: |
+        poetry run fetch_weather
+
+    - name: merge data
+      run: |
+        poetry run merge_data
 
     - name: Push data
       run: |
