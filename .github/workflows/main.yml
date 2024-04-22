@@ -63,7 +63,7 @@ jobs:
 
       - name: Checkout validate branch
         run: |
-          git checkout validate &&
+          git checkout origin/validate &&
           dvc checkout
 
       - name: Pull data
