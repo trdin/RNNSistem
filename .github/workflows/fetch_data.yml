@@ -468,7 +468,17 @@ jobs:
       - name: Pull data
         run: |
           poetry run dvc pull -r origin
-
+        
+      - name: Reference data and Current data
+        run: |
+          cp data/processed/station_1.csv current_data.csv &&
+          git checkout HEAD~1 &&
+          dvc checkout &&
+          cp data/processed/station_1.csv reference_data.csv &&
+          git checkout validate &&
+          dvc checkout
+          
+        
       - name: Test data
         run: |
           poetry run test_data
