@@ -128,14 +128,25 @@ jobs:
         
       - name: Reference data and Current data
         run: |
-          cp data/processed/station_1.csv current_data.csv &&
-          git checkout HEAD~1 &&
-          dvc checkout &&
-          cp data/processed/station_1.csv reference_data.csv &&
+          cp data/processed/station_1.csv current_data.csv
+        
+      - name: Checkout reference data
+        run: |
+          git checkout HEAD~1
+        
+      - name: Checkout current data
+        run: |
+          dvc checkout
+
+      - name: Copy reference data
+        run: |
+          cp data/processed/station_1.csv reference_data.csv
+      
+      - name: Checkout validate branch
+        run: |
           git checkout validate &&
           dvc checkout
           
-        
       - name: Test data
         run: |
           poetry run test_data
