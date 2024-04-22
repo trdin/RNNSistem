@@ -61,6 +61,11 @@ jobs:
           poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
           poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
 
+      - name: Checkout validate branch
+        run: |
+          git checkout validate &&
+          dvc checkout
+
       - name: Pull data
         run: |
           poetry run dvc pull -r origin
