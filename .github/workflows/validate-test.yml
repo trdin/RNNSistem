@@ -1,0 +1,144 @@
+name: Test and Validate Data
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+
+  validate_data:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+
+      - run: poetry install --no-interaction
+
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+        with:
+          version: '3.48.4'
+  
+      - name: Setup Dagshub
+        run: |
+          poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+          poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+          poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Pull data
+        run: |
+          poetry run dvc pull -r origin
+
+      - name: Validate data
+        run: |
+          poetry run python gx/validate_data.py
+
+  
+  test_data:
+    needs: validate_data
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-1.8.2
+
+      - uses: snok/install-poetry@v1
+        with:
+          version: 1.8.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install --no-interaction --no-root
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+
+      - run: poetry install --no-interaction
+
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+        with:
+          version: '3.48.4'
+  
+      - name: Setup Dagshub
+        run: |
+          poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+          poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+          poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Pull data
+        run: |
+          poetry run dvc pull -r origin
+        
+      - name: Reference data and Current data
+        run: |
+          cp data/processed/station_1.csv current_data.csv &&
+          git checkout HEAD~1 &&
+          dvc checkout &&
+          cp data/processed/station_1.csv reference_data.csv &&
+          git checkout validate &&
+          dvc checkout
+          
+        
+      - name: Test data
+        run: |
+          poetry run test_data
+  
+
+    
