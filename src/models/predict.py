@@ -110,7 +110,7 @@ def predict_station(station_name, station_number, windowsize=24):
     stands_scaler = joblib.load('./models/'+station_name+'/stands_scaler.joblib')
     other_scaler = joblib.load('./models/'+station_name+'/other_scaler.joblib')
 
-    data = pd.read_csv('./data/processed/'+station_name+'.csv')
+    data = pd.read_csv('./data/processed/'+str(station_number)+'/'+station_name+'.csv')
     data['date'] = pd.to_datetime(data['date'])
     data = data.sort_values(by=['date'])
 
