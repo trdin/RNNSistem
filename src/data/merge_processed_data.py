@@ -39,7 +39,7 @@ def merge_and_save_data(weather_data_file, station_data_file, output_directory):
 
     
     for station_number, data in merged_data.items():
-        filename = os.path.join(output_directory, f'station_{station_number}.csv')
+        filename = os.path.join(f"{output_directory}{station_number}", f'station_{station_number}.csv')
         columns = ["date", "bike_stands", "available_bike_stands", "temperature", 
                    "relative_humidity", "dew_point", "apparent_temperature", 
                    "precipitation_probability", "rain", "surface_pressure"]
