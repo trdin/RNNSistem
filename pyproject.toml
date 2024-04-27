@@ -45,6 +45,8 @@ preprocess_mbike = "src.data.preprocess_mbike_data:main"
 fetch_weather = "src.data.fetch_weather_data:main"
 merge_data = "src.data.merge_processed_data:main"
 
+split_data = "src.data.split_data:main"
+
 test_data = "src.data_test.test_data:main"
 
 train = "src.models.train:main"
