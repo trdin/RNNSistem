@@ -164,7 +164,7 @@ jobs:
       
   
   split_data:
-    needs: validate_data
+    needs: test_data
     runs-on: ubuntu-latest
 
     permissions:
