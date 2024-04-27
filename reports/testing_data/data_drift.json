@@ -1,7 +1,7 @@
 {
-  "id": "0d128fd3-7b55-4c9f-91af-5a900ff9e7a1",
+  "id": "477e9ecb-7c5c-4b2f-8e79-f5646f008874",
   "name": null,
-  "timestamp": "2024-04-27T21:29:33.303975",
+  "timestamp": "2024-04-27T21:51:14.404084",
   "metadata": {
     "metric_presets": [
       "DataDriftPreset"
@@ -9389,22 +9389,6 @@
     },
     "data_definition": {
       "columns": {
-        "temperature": {
-          "column_name": "temperature",
-          "column_type": "num"
-        },
-        "rain": {
-          "column_name": "rain",
-          "column_type": "num"
-        },
-        "apparent_temperature": {
-          "column_name": "apparent_temperature",
-          "column_type": "num"
-        },
-        "precipitation_probability": {
-          "column_name": "precipitation_probability",
-          "column_type": "num"
-        },
         "available_bike_stands": {
           "column_name": "available_bike_stands",
           "column_type": "num"
@@ -9413,20 +9397,36 @@
           "column_name": "relative_humidity",
           "column_type": "num"
         },
-        "surface_pressure": {
-          "column_name": "surface_pressure",
+        "apparent_temperature": {
+          "column_name": "apparent_temperature",
+          "column_type": "num"
+        },
+        "rain": {
+          "column_name": "rain",
+          "column_type": "num"
+        },
+        "temperature": {
+          "column_name": "temperature",
           "column_type": "num"
         },
         "dew_point": {
           "column_name": "dew_point",
           "column_type": "num"
         },
-        "date": {
-          "column_name": "date",
-          "column_type": "cat"
+        "surface_pressure": {
+          "column_name": "surface_pressure",
+          "column_type": "num"
+        },
+        "precipitation_probability": {
+          "column_name": "precipitation_probability",
+          "column_type": "num"
         },
         "bike_stands": {
           "column_name": "bike_stands",
+          "column_type": "cat"
+        },
+        "date": {
+          "column_name": "date",
           "column_type": "cat"
         }
       },

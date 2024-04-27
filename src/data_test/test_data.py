@@ -45,5 +45,7 @@ def main():
     else:
         print("All tests passed!")
 
+    tests.save_html("reports/sites/stability_tests.html")
+
 if __name__ == "__main__":
     main()
