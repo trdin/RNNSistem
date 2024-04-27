@@ -63,6 +63,10 @@ jobs:
       - name: Pull data
         run: |
           poetry run dvc pull -r origin
+      
+      - name: Reference data and Current data
+        run: |
+          cp data/processed/1/station_1.csv data/current_data.csv
 
       - name: Validate data
         run: |
