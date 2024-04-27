@@ -1,8 +1,7 @@
 name: Test and Validate Data
 
 on:
-  schedule:
-    - cron: '0 * * * *'
+  
   workflow_dispatch:
 
 permissions:
@@ -60,6 +59,11 @@ jobs:
           poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
           poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
           poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Checkout validate branch
+        run: |
+          git switch validate &&
+          dvc checkout
 
       - name: Pull data
         run: |
