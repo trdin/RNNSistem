@@ -43,7 +43,7 @@ def main():
         print(test_results['summary'])
         
 
-        #sys.exit(1)
+        sys.exit(1)
     else:
         print("All tests passed!")
 
