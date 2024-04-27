@@ -17,8 +17,8 @@ from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTe
 from evidently.tests import *
 
 def main():
-    reference = pd.read_csv("./reference_data.csv")
-    current = pd.read_csv("./current_data.csv")
+    reference = pd.read_csv("./data/reference_data.csv")
+    current = pd.read_csv("./data/current_data.csv")
     
     report = Report(metrics=[DataDriftPreset()])
     report.run(reference_data=reference, current_data=current)
