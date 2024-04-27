@@ -40,7 +40,9 @@ def main():
     # Check if any test failed
     if test_results['summary']['failed_tests'] > 0:
         print("Some tests failed:")
-        print(test_results['summary']['failed_tests'])
+        print(test_results['summary'])
+        
+
         sys.exit(1)
     else:
         print("All tests passed!")
