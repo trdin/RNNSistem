@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: 'validate'
+          ref: 'main'
 
       - uses: actions/setup-python@v2
         with:
@@ -60,9 +60,9 @@ jobs:
           poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
           poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
 
-      - name: Checkout validate branch
+      - name: Checkout main branch
         run: |
-          git switch validate &&
+          git switch main &&
           dvc checkout
 
       - name: Pull data
@@ -87,7 +87,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: 'validate'
+          ref: 'main'
 
       - uses: actions/setup-python@v2
         with:
