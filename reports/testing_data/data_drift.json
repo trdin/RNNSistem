@@ -1,7 +1,7 @@
 {
-  "id": "7812fe8f-1054-4b03-ab45-0390a5cd6d0e",
+  "id": "0d128fd3-7b55-4c9f-91af-5a900ff9e7a1",
   "name": null,
-  "timestamp": "2024-04-27T21:07:09.617681",
+  "timestamp": "2024-04-27T21:29:33.303975",
   "metadata": {
     "metric_presets": [
       "DataDriftPreset"
@@ -9393,24 +9393,24 @@
           "column_name": "temperature",
           "column_type": "num"
         },
-        "apparent_temperature": {
-          "column_name": "apparent_temperature",
-          "column_type": "num"
-        },
         "rain": {
           "column_name": "rain",
           "column_type": "num"
         },
-        "relative_humidity": {
-          "column_name": "relative_humidity",
+        "apparent_temperature": {
+          "column_name": "apparent_temperature",
+          "column_type": "num"
+        },
+        "precipitation_probability": {
+          "column_name": "precipitation_probability",
           "column_type": "num"
         },
         "available_bike_stands": {
           "column_name": "available_bike_stands",
           "column_type": "num"
         },
-        "precipitation_probability": {
-          "column_name": "precipitation_probability",
+        "relative_humidity": {
+          "column_name": "relative_humidity",
           "column_type": "num"
         },
         "surface_pressure": {
@@ -9421,12 +9421,12 @@
           "column_name": "dew_point",
           "column_type": "num"
         },
-        "bike_stands": {
-          "column_name": "bike_stands",
-          "column_type": "cat"
-        },
         "date": {
           "column_name": "date",
+          "column_type": "cat"
+        },
+        "bike_stands": {
+          "column_name": "bike_stands",
           "column_type": "cat"
         }
       },

@@ -39,7 +39,10 @@ def main():
 
     # Check if any test failed
     if test_results['summary']['failed_tests'] > 0:
-        print("Some tests failed!")
+        print("Some tests failed:")
+        for test_name, result in test_results['results'].items():
+            if not result['result']:
+                print(f"- {test_name}: {result['message']}")
         sys.exit(1)
     else:
         print("All tests passed!")
