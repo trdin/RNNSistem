@@ -3,3 +3,4 @@ __pycache__/
 /data-file.bin
 /data
 current_data.csv
+.env

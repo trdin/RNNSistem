@@ -8,6 +8,12 @@ import src.data.prepare_learn_data as pld
 import src.helpers.calculate as calc
 import src.visualization.visualization as vis
 import os
+import mlflow
+import dagshub.auth
+import dagshub
+
+import src.settings as settings
+
 
 def save_train_metrics(history, file_path):
     with open(file_path, 'w') as file:
@@ -30,9 +36,9 @@ def build_lstm_model(input_shape):
     model.add(Dense(units=1))
     return model
 
-def train_model(model, X_train, y_train, epochs=50, station_name = "default"):
+def train_model(model, X_train, y_train, epochs=50, station_name = "default", batch_size=32):
     model.compile(optimizer='adam', loss='mean_squared_error')
-    history = model.fit(X_train, y_train, epochs=epochs, batch_size=32, validation_split=0.2, verbose=1)
+    history = model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_split=0.2, verbose=1)
     vis.plot_model_history(history)
     save_train_metrics(history, "./reports/"+station_name+"/train_metrics.txt")
 
@@ -62,6 +68,14 @@ def ensure_directory_exists(directory):
         os.makedirs(directory)
 
 def train(data_path, station_name, test = False,windowsize = 24, test_size_multiplier = 10):
+
+    dagshub.auth.add_app_token(token=settings.mlflow_tracking_password)
+    dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
+    mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
+    
+    mlflow.start_run(run_name=station_name, experiment_id="1")
+    
+    mlflow.tensorflow.autolog()
 
     learn_features, all_data = pld.prepare_data(data_path)
 
@@ -159,8 +173,19 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
         lstm_evs_adv
     ) """
 
+
     lstm_model_final = build_lstm_model(input_shape)
-    train_model(lstm_model_final, X_final, y_final, epochs=30)
+
+    epochs = 30
+    batch_size = 32
+
+
+    train_model(lstm_model_final, X_final, y_final, epochs=30, batch_size=32)
+
+    mlflow.log_param("epochs", epochs)
+    mlflow.log_param("batch_size", batch_size)
+    mlflow.log_param("train_dataset_size", len(train_data))
+
 
     station_directory = './models/' + station_name
     ensure_directory_exists(station_directory)
@@ -169,6 +194,8 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
 
     joblib.dump(stands_scaler, os.path.join(station_directory, 'stands_scaler.joblib'))
     joblib.dump(other_scaler, os.path.join(station_directory, 'other_scaler.joblib'))
+
+    mlflow.end_run()
 
 
 
