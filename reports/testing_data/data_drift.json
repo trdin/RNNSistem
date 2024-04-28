@@ -1,7 +1,7 @@
 {
-  "id": "ed54707b-3b3e-46a7-8e8d-1bfc117b3cdc",
+  "id": "4fed9757-5256-4c84-aa93-402949575531",
   "name": null,
-  "timestamp": "2024-04-28T02:32:09.250144",
+  "timestamp": "2024-04-28T03:19:55.761310",
   "metadata": {
     "metric_presets": [
       "DataDriftPreset"
@@ -101,6 +101,86 @@
                   37,
                   40,
                   55,
+                  50,
+                  41,
+                  55,
+                  39,
+                  32,
+                  19,
+                  24,
+                  19,
+                  16,
+                  6
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  -2.1524314880371094,
+                  0.9697814941406251,
+                  4.0919944763183596,
+                  7.2142074584960945,
+                  10.336420440673828,
+                  13.458633422851562,
+                  16.5808464050293,
+                  19.70305938720703,
+                  22.825272369384766,
+                  25.947485351562502,
+                  29.069698333740234
+                ],
+                "y": [
+                  0.01913210713532798,
+                  0.04464158331576529,
+                  0.0503103558003069,
+                  0.0467673729974684,
+                  0.04960175923973922,
+                  0.03755561771008824,
+                  0.023383686498734214,
+                  0.02125789681703108,
+                  0.021966493377598782,
+                  0.005668772484541628
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": 0.9999999999999999,
+                "available_bike_stands": 0.21416718816230929,
+                "bike_stands": NaN,
+                "dew_point": 0.7848078711595317,
+                "precipitation_probability": -0.43717853512549726,
+                "rain": -0.20562288597461123,
+                "relative_humidity": -0.691200287544364,
+                "surface_pressure": 0.35782049588155324,
+                "temperature": 0.9909751500756507
+              }
+            },
+            "reference": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  -2.1524314880371094,
+                  0.07772064208984375,
+                  2.307872772216797,
+                  4.53802490234375,
+                  6.768177032470703,
+                  8.998329162597656,
+                  11.22848129272461,
+                  13.458633422851562,
+                  15.688785552978516,
+                  17.91893768310547,
+                  20.149089813232422,
+                  22.379241943359375,
+                  24.609394073486328,
+                  26.83954620361328,
+                  29.069698333740234
+                ],
+                "y": [
+                  19,
+                  37,
+                  40,
+                  55,
                   49,
                   41,
                   55,
@@ -153,86 +233,6 @@
                 "relative_humidity": -0.6912164116788144,
                 "surface_pressure": 0.3579829427713989,
                 "temperature": 0.9909859281943
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  -2.1524314880371094,
-                  0.07772064208984375,
-                  2.307872772216797,
-                  4.53802490234375,
-                  6.768177032470703,
-                  8.998329162597656,
-                  11.22848129272461,
-                  13.458633422851562,
-                  15.688785552978516,
-                  17.91893768310547,
-                  20.149089813232422,
-                  22.379241943359375,
-                  24.609394073486328,
-                  26.83954620361328,
-                  29.069698333740234
-                ],
-                "y": [
-                  19,
-                  37,
-                  40,
-                  55,
-                  48,
-                  41,
-                  55,
-                  39,
-                  32,
-                  19,
-                  24,
-                  19,
-                  16,
-                  6
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  -2.1524314880371094,
-                  0.9697814941406251,
-                  4.0919944763183596,
-                  7.2142074584960945,
-                  10.336420440673828,
-                  13.458633422851562,
-                  16.5808464050293,
-                  19.70305938720703,
-                  22.825272369384766,
-                  25.947485351562502,
-                  29.069698333740234
-                ],
-                "y": [
-                  0.019217138722596106,
-                  0.04483999035272424,
-                  0.049110465624412264,
-                  0.046975227988568256,
-                  0.049822211503026945,
-                  0.03772253156657752,
-                  0.023487613994284146,
-                  0.021352376358440107,
-                  0.022064122237054774,
-                  0.005693967028917369
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": 1.0,
-                "available_bike_stands": 0.21441593806184717,
-                "bike_stands": NaN,
-                "dew_point": 0.7860121789930662,
-                "precipitation_probability": -0.4388471016417576,
-                "rain": -0.20615379313019586,
-                "relative_humidity": -0.6912346890396209,
-                "surface_pressure": 0.3581462502285898,
-                "temperature": 0.9909967998038963
               }
             },
             "scatter": {
@@ -541,7 +541,7 @@
                     "146": 14.547826766967773,
                     "147": 11.781317710876465,
                     "148": 8.93955135345459,
-                    "149": 7.778292338053386
+                    "149": 7.609730243682861
                   },
                   "std": {
                     "0": 0.5669558181971577,
@@ -693,14 +693,14 @@
                     "146": 1.3967428073556007,
                     "147": 1.998248630038362,
                     "148": 0.46279322710895066,
-                    "149": 0.5841846073052869
+                    "149": 0.584095159692264
                   }
                 }
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": 3.6969063612646353,
-                "y1": 18.292236870445162
+                "y0": 3.6940912813826703,
+                "y1": 18.277799056068666
               }
             }
           },
@@ -713,6 +713,84 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  0.0,
+                  1.6923076923076923,
+                  3.3846153846153846,
+                  5.076923076923077,
+                  6.769230769230769,
+                  8.461538461538462,
+                  10.153846153846153,
+                  11.846153846153847,
+                  13.538461538461538,
+                  15.23076923076923,
+                  16.923076923076923,
+                  18.615384615384617,
+                  20.307692307692307,
+                  22.0
+                ],
+                "y": [
+                  20,
+                  39,
+                  36,
+                  20,
+                  38,
+                  29,
+                  14,
+                  39,
+                  31,
+                  16,
+                  43,
+                  43,
+                  84
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  0.0,
+                  2.2,
+                  4.4,
+                  6.6000000000000005,
+                  8.8,
+                  11.0,
+                  13.200000000000001,
+                  15.400000000000002,
+                  17.6,
+                  19.8,
+                  22.0
+                ],
+                "y": [
+                  0.03519710378117458,
+                  0.0412308930008045,
+                  0.03921962992759453,
+                  0.03821399839098954,
+                  0.029163314561544657,
+                  0.05329847144006433,
+                  0.031174577634754612,
+                  0.03720836685438456,
+                  0.04022526146419953,
+                  0.10961383748994372
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": 0.21416718816230926,
+                "available_bike_stands": 0.9999999999999999,
+                "bike_stands": NaN,
+                "dew_point": 0.05983107633151705,
+                "precipitation_probability": -0.012482473698826277,
+                "rain": -0.12688229839291473,
+                "relative_humidity": -0.27589522924806986,
+                "surface_pressure": -0.03236239617155476,
+                "temperature": 0.2317155163413236
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -788,84 +866,6 @@
                 "relative_humidity": -0.27659216099958933,
                 "surface_pressure": -0.03236695548662619,
                 "temperature": 0.23189756062002723
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  0.0,
-                  1.6923076923076923,
-                  3.3846153846153846,
-                  5.076923076923077,
-                  6.769230769230769,
-                  8.461538461538462,
-                  10.153846153846153,
-                  11.846153846153847,
-                  13.538461538461538,
-                  15.23076923076923,
-                  16.923076923076923,
-                  18.615384615384617,
-                  20.307692307692307,
-                  22.0
-                ],
-                "y": [
-                  20,
-                  39,
-                  36,
-                  20,
-                  38,
-                  29,
-                  14,
-                  37,
-                  31,
-                  16,
-                  43,
-                  43,
-                  84
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  0.0,
-                  2.2,
-                  4.4,
-                  6.6000000000000005,
-                  8.8,
-                  11.0,
-                  13.200000000000001,
-                  15.400000000000002,
-                  17.6,
-                  19.8,
-                  22.0
-                ],
-                "y": [
-                  0.03535353535353535,
-                  0.04141414141414141,
-                  0.03939393939393939,
-                  0.038383838383838374,
-                  0.0292929292929293,
-                  0.051515151515151486,
-                  0.0313131313131313,
-                  0.037373737373737385,
-                  0.040404040404040414,
-                  0.11010101010101013
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": 0.21441593806184714,
-                "available_bike_stands": 1.0,
-                "bike_stands": NaN,
-                "dew_point": 0.05978635183071703,
-                "precipitation_probability": -0.012385451532500959,
-                "rain": -0.12685575740963848,
-                "relative_humidity": -0.2772961444707374,
-                "surface_pressure": -0.03237153510620695,
-                "temperature": 0.2320806456587263
               }
             },
             "scatter": {
@@ -1174,7 +1174,7 @@
                     "146": 19.333333333333332,
                     "147": 14.333333333333334,
                     "148": 14.0,
-                    "149": 12.666666666666666
+                    "149": 12.75
                   },
                   "std": {
                     "0": 2.70801280154532,
@@ -1326,14 +1326,14 @@
                     "146": 3.785938897200182,
                     "147": 1.1547005383792517,
                     "148": 1.0,
-                    "149": 2.5166114784235836
+                    "149": 2.0615528128088303
                   }
                 }
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": 5.7256470826070505,
-                "y1": 19.612130695170727
+                "y0": 5.734082732294916,
+                "y1": 19.60516338743901
               }
             }
           },
@@ -1346,6 +1346,60 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  21.5,
+                  22.5
+                ],
+                "y": [
+                  452
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  21.5,
+                  21.6,
+                  21.7,
+                  21.8,
+                  21.9,
+                  22.0,
+                  22.1,
+                  22.2,
+                  22.3,
+                  22.4,
+                  22.5
+                ],
+                "y": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  9.999999999999858,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": NaN,
+                "available_bike_stands": NaN,
+                "bike_stands": NaN,
+                "dew_point": NaN,
+                "precipitation_probability": NaN,
+                "rain": NaN,
+                "relative_humidity": NaN,
+                "surface_pressure": NaN,
+                "temperature": NaN
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -1381,60 +1435,6 @@
                   0.0,
                   0.0,
                   9.99999999999986,
-                  0.0,
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": NaN,
-                "available_bike_stands": NaN,
-                "bike_stands": NaN,
-                "dew_point": NaN,
-                "precipitation_probability": NaN,
-                "rain": NaN,
-                "relative_humidity": NaN,
-                "surface_pressure": NaN,
-                "temperature": NaN
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  21.5,
-                  22.5
-                ],
-                "y": [
-                  450
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  21.5,
-                  21.6,
-                  21.7,
-                  21.8,
-                  21.9,
-                  22.0,
-                  22.1,
-                  22.2,
-                  22.3,
-                  22.4,
-                  22.5
-                ],
-                "y": [
-                  0.0,
-                  0.0,
-                  0.0,
-                  0.0,
-                  0.0,
-                  9.999999999999858,
                   0.0,
                   0.0,
                   0.0,
@@ -1958,6 +1958,84 @@
                   56,
                   36,
                   43,
+                  33,
+                  55,
+                  62,
+                  35,
+                  9,
+                  6
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  -2.826406955718994,
+                  -1.1403553485870361,
+                  0.5456962585449219,
+                  2.23174786567688,
+                  3.917799472808838,
+                  5.603851079940796,
+                  7.289902687072754,
+                  8.975954294204712,
+                  10.66200590133667,
+                  12.348057508468628,
+                  14.034109115600586
+                ],
+                "y": [
+                  0.04723818497738402,
+                  0.036740810537965345,
+                  0.060359903026657356,
+                  0.08660333912520403,
+                  0.06167207483158469,
+                  0.06692076205129403,
+                  0.10366157258925938,
+                  0.08922768273505871,
+                  0.03280429512318335,
+                  0.007873030829564004
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": 0.7848078711595317,
+                "available_bike_stands": 0.05983107633151705,
+                "bike_stands": NaN,
+                "dew_point": 0.9999999999999999,
+                "precipitation_probability": -0.3470781600088203,
+                "rain": -0.12046457072704275,
+                "relative_humidity": -0.11195452597299561,
+                "surface_pressure": 0.40827168719759466,
+                "temperature": 0.7151392767856812
+              }
+            },
+            "reference": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  -2.826406955718994,
+                  -1.5294441810021033,
+                  -0.23248140628521252,
+                  1.0644813684316783,
+                  2.361444143148569,
+                  3.6584069178654595,
+                  4.955369692582351,
+                  6.252332467299242,
+                  7.549295242016132,
+                  8.846258016733023,
+                  10.143220791449913,
+                  11.440183566166805,
+                  12.737146340883696,
+                  14.034109115600586
+                ],
+                "y": [
+                  22,
+                  28,
+                  24,
+                  43,
+                  56,
+                  36,
+                  43,
                   32,
                   55,
                   62,
@@ -2006,84 +2084,6 @@
                 "relative_humidity": -0.11294202429450083,
                 "surface_pressure": 0.4082779712765711,
                 "temperature": 0.7159047329061076
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  -2.826406955718994,
-                  -1.5294441810021033,
-                  -0.23248140628521252,
-                  1.0644813684316783,
-                  2.361444143148569,
-                  3.6584069178654595,
-                  4.955369692582351,
-                  6.252332467299242,
-                  7.549295242016132,
-                  8.846258016733023,
-                  10.143220791449913,
-                  11.440183566166805,
-                  12.737146340883696,
-                  14.034109115600586
-                ],
-                "y": [
-                  22,
-                  28,
-                  24,
-                  43,
-                  56,
-                  36,
-                  43,
-                  31,
-                  55,
-                  62,
-                  35,
-                  9,
-                  6
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  -2.826406955718994,
-                  -1.1403553485870361,
-                  0.5456962585449219,
-                  2.23174786567688,
-                  3.917799472808838,
-                  5.603851079940796,
-                  7.289902687072754,
-                  8.975954294204712,
-                  10.66200590133667,
-                  12.348057508468628,
-                  14.034109115600586
-                ],
-                "y": [
-                  0.047448132466172396,
-                  0.03690410302924519,
-                  0.06062816926233139,
-                  0.08698824285464939,
-                  0.06194617294194729,
-                  0.06458218030117908,
-                  0.10412229068965609,
-                  0.0896242502138812,
-                  0.032950091990397494,
-                  0.0079080220776954
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": 0.7860121789930662,
-                "available_bike_stands": 0.059786351830717024,
-                "bike_stands": NaN,
-                "dew_point": 1.0,
-                "precipitation_probability": -0.34676204235002317,
-                "rain": -0.1203042340790396,
-                "relative_humidity": -0.11393848592952938,
-                "surface_pressure": 0.40828428615753215,
-                "temperature": 0.7166745665441149
               }
             },
             "scatter": {
@@ -2392,7 +2392,7 @@
                     "146": 6.082816123962402,
                     "147": 6.725001494089763,
                     "148": 6.310969511667888,
-                    "149": 7.213412443796794
+                    "149": 7.000377416610718
                   },
                   "std": {
                     "0": 0.6209954483755901,
@@ -2544,14 +2544,14 @@
                     "146": 0.811678299096531,
                     "147": 0.5110589092550499,
                     "148": 0.1524966944984738,
-                    "149": 0.8234082417003328
+                    "149": 0.7959500274720208
                   }
                 }
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": 1.3431406987453913,
-                "y1": 9.352355119762361
+                "y0": 1.3495553312899595,
+                "y1": 9.350435052298941
               }
             }
           },
@@ -2564,6 +2564,90 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  0.0,
+                  6.25,
+                  12.5,
+                  18.75,
+                  25.0,
+                  31.25,
+                  37.5,
+                  43.75,
+                  50.0,
+                  56.25,
+                  62.5,
+                  68.75,
+                  75.0,
+                  81.25,
+                  87.5,
+                  93.75,
+                  100.0
+                ],
+                "y": [
+                  350,
+                  5,
+                  7,
+                  3,
+                  2,
+                  3,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  6,
+                  5,
+                  12,
+                  5,
+                  44
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  0.0,
+                  10.0,
+                  20.0,
+                  30.0,
+                  40.0,
+                  50.0,
+                  60.0,
+                  70.0,
+                  80.0,
+                  90.0,
+                  100.0
+                ],
+                "y": [
+                  0.07743362831858407,
+                  0.002654867256637168,
+                  0.0011061946902654867,
+                  0.0011061946902654867,
+                  0.00044247787610619474,
+                  0.0008849557522123895,
+                  0.00044247787610619474,
+                  0.002433628318584071,
+                  0.002654867256637168,
+                  0.010840707964601771
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": -0.4371785351254972,
+                "available_bike_stands": -0.012482473698826275,
+                "bike_stands": NaN,
+                "dew_point": -0.3470781600088203,
+                "precipitation_probability": 1.0,
+                "rain": 0.353597505181504,
+                "relative_humidity": 0.2730445182223654,
+                "surface_pressure": -0.4562080685372799,
+                "temperature": -0.4043224774663676
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -2645,90 +2729,6 @@
                 "relative_humidity": 0.2751282122436468,
                 "surface_pressure": -0.4562849112732071,
                 "temperature": -0.4053417455148119
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  0.0,
-                  6.25,
-                  12.5,
-                  18.75,
-                  25.0,
-                  31.25,
-                  37.5,
-                  43.75,
-                  50.0,
-                  56.25,
-                  62.5,
-                  68.75,
-                  75.0,
-                  81.25,
-                  87.5,
-                  93.75,
-                  100.0
-                ],
-                "y": [
-                  348,
-                  5,
-                  7,
-                  3,
-                  2,
-                  3,
-                  2,
-                  2,
-                  2,
-                  2,
-                  2,
-                  6,
-                  5,
-                  12,
-                  5,
-                  44
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  0.0,
-                  10.0,
-                  20.0,
-                  30.0,
-                  40.0,
-                  50.0,
-                  60.0,
-                  70.0,
-                  80.0,
-                  90.0,
-                  100.0
-                ],
-                "y": [
-                  0.07733333333333332,
-                  0.0026666666666666666,
-                  0.0011111111111111111,
-                  0.0011111111111111111,
-                  0.00044444444444444447,
-                  0.0008888888888888889,
-                  0.00044444444444444447,
-                  0.002444444444444445,
-                  0.0026666666666666666,
-                  0.010888888888888889
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": -0.4388471016417576,
-                "available_bike_stands": -0.012385451532500959,
-                "bike_stands": NaN,
-                "dew_point": -0.34676204235002317,
-                "precipitation_probability": 0.9999999999999998,
-                "rain": 0.3534494133024785,
-                "relative_humidity": 0.27723158233884293,
-                "surface_pressure": -0.45636216906020616,
-                "temperature": -0.4063671001370363
               }
             },
             "scatter": {
@@ -3195,8 +3195,8 @@
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": -17.439518599388567,
-                "y1": 51.026185266055236
+                "y0": -17.447838883426265,
+                "y1": 50.96003400537749
               }
             }
           },
@@ -3209,6 +3209,94 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  0.0,
+                  0.05555555555555555,
+                  0.1111111111111111,
+                  0.16666666666666666,
+                  0.2222222222222222,
+                  0.2777777777777778,
+                  0.3333333333333333,
+                  0.38888888888888884,
+                  0.4444444444444444,
+                  0.5,
+                  0.5555555555555556,
+                  0.611111111111111,
+                  0.6666666666666666,
+                  0.7222222222222222,
+                  0.7777777777777777,
+                  0.8333333333333333,
+                  0.8888888888888888,
+                  0.9444444444444444,
+                  1.0
+                ],
+                "y": [
+                  425,
+                  18,
+                  0,
+                  3,
+                  0,
+                  2,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  0.0,
+                  0.1,
+                  0.2,
+                  0.30000000000000004,
+                  0.4,
+                  0.5,
+                  0.6000000000000001,
+                  0.7000000000000001,
+                  0.8,
+                  0.9,
+                  1.0
+                ],
+                "y": [
+                  9.402654867256636,
+                  0.39823008849557523,
+                  0.06637168141592918,
+                  0.044247787610619475,
+                  0.022123893805309738,
+                  0.0,
+                  0.022123893805309738,
+                  0.0,
+                  0.0,
+                  0.044247787610619475
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": -0.20562288597461123,
+                "available_bike_stands": -0.12688229839291473,
+                "bike_stands": NaN,
+                "dew_point": -0.12046457072704275,
+                "precipitation_probability": 0.353597505181504,
+                "rain": 1.0,
+                "relative_humidity": 0.18365449606017514,
+                "surface_pressure": -0.15816326512560935,
+                "temperature": -0.1901010926815279
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -3294,94 +3382,6 @@
                 "relative_humidity": 0.1845195044616819,
                 "surface_pressure": -0.158153074329728,
                 "temperature": -0.1904389150392963
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  0.0,
-                  0.05555555555555555,
-                  0.1111111111111111,
-                  0.16666666666666666,
-                  0.2222222222222222,
-                  0.2777777777777778,
-                  0.3333333333333333,
-                  0.38888888888888884,
-                  0.4444444444444444,
-                  0.5,
-                  0.5555555555555556,
-                  0.611111111111111,
-                  0.6666666666666666,
-                  0.7222222222222222,
-                  0.7777777777777777,
-                  0.8333333333333333,
-                  0.8888888888888888,
-                  0.9444444444444444,
-                  1.0
-                ],
-                "y": [
-                  423,
-                  18,
-                  0,
-                  3,
-                  0,
-                  2,
-                  0,
-                  1,
-                  0,
-                  0,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                  0,
-                  0,
-                  2
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  0.0,
-                  0.1,
-                  0.2,
-                  0.30000000000000004,
-                  0.4,
-                  0.5,
-                  0.6000000000000001,
-                  0.7000000000000001,
-                  0.8,
-                  0.9,
-                  1.0
-                ],
-                "y": [
-                  9.4,
-                  0.4,
-                  0.06666666666666664,
-                  0.04444444444444445,
-                  0.022222222222222227,
-                  0.0,
-                  0.022222222222222227,
-                  0.0,
-                  0.0,
-                  0.04444444444444445
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": -0.20615379313019586,
-                "available_bike_stands": -0.1268557574096385,
-                "bike_stands": NaN,
-                "dew_point": -0.1203042340790396,
-                "precipitation_probability": 0.3534494133024785,
-                "rain": 1.0,
-                "relative_humidity": 0.18539264734020697,
-                "surface_pressure": -0.1581428377121047,
-                "temperature": -0.19077862685338223
               }
             },
             "scatter": {
@@ -3848,8 +3848,8 @@
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": -0.06882699379130394,
-                "y1": 0.09593810514083362
+                "y0": -0.06876793891678691,
+                "y1": 0.09581893693738196
               }
             }
           },
@@ -3862,6 +3862,84 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  21.0,
+                  26.692307692307693,
+                  32.38461538461539,
+                  38.07692307692308,
+                  43.769230769230774,
+                  49.46153846153847,
+                  55.15384615384615,
+                  60.84615384615385,
+                  66.53846153846155,
+                  72.23076923076923,
+                  77.92307692307693,
+                  83.61538461538461,
+                  89.3076923076923,
+                  95.0
+                ],
+                "y": [
+                  2,
+                  10,
+                  23,
+                  37,
+                  43,
+                  55,
+                  32,
+                  30,
+                  43,
+                  47,
+                  73,
+                  41,
+                  16
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  21.0,
+                  28.4,
+                  35.8,
+                  43.2,
+                  50.6,
+                  58.0,
+                  65.4,
+                  72.80000000000001,
+                  80.2,
+                  87.60000000000001,
+                  95.0
+                ],
+                "y": [
+                  0.0020928007653671374,
+                  0.0038866299928246835,
+                  0.01554651997129872,
+                  0.014948576895479553,
+                  0.01913417842621383,
+                  0.012556804592202812,
+                  0.014051662281750766,
+                  0.022721836881128943,
+                  0.02451566610858644,
+                  0.005680459220282236
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": -0.691200287544364,
+                "available_bike_stands": -0.27589522924806986,
+                "bike_stands": NaN,
+                "dew_point": -0.11195452597299561,
+                "precipitation_probability": 0.2730445182223654,
+                "rain": 0.18365449606017514,
+                "relative_humidity": 1.0,
+                "surface_pressure": -0.11967454989680763,
+                "temperature": -0.7632398148106031
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -3937,84 +4015,6 @@
                 "relative_humidity": 1.0,
                 "surface_pressure": -0.12003990093478066,
                 "temperature": -0.7631717059593092
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  21.0,
-                  26.692307692307693,
-                  32.38461538461539,
-                  38.07692307692308,
-                  43.769230769230774,
-                  49.46153846153847,
-                  55.15384615384615,
-                  60.84615384615385,
-                  66.53846153846155,
-                  72.23076923076923,
-                  77.92307692307693,
-                  83.61538461538461,
-                  89.3076923076923,
-                  95.0
-                ],
-                "y": [
-                  2,
-                  10,
-                  23,
-                  37,
-                  43,
-                  55,
-                  32,
-                  30,
-                  43,
-                  47,
-                  73,
-                  39,
-                  16
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  21.0,
-                  28.4,
-                  35.8,
-                  43.2,
-                  50.6,
-                  58.0,
-                  65.4,
-                  72.80000000000001,
-                  80.2,
-                  87.60000000000001,
-                  95.0
-                ],
-                "y": [
-                  0.0021021021021021026,
-                  0.0039039039039039047,
-                  0.015615615615615605,
-                  0.015015015015015018,
-                  0.019219219219219225,
-                  0.012612612612612602,
-                  0.014114114114114102,
-                  0.02282282282282285,
-                  0.024024024024024003,
-                  0.005705705705705713
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": -0.6912346890396209,
-                "available_bike_stands": -0.2772961444707374,
-                "bike_stands": NaN,
-                "dew_point": -0.11393848592952936,
-                "precipitation_probability": 0.2772315823388429,
-                "rain": 0.18539264734020697,
-                "relative_humidity": 1.0,
-                "surface_pressure": -0.12040884706985362,
-                "temperature": -0.7631047489815125
               }
             },
             "scatter": {
@@ -4323,7 +4323,7 @@
                     "146": 50.333333333333336,
                     "147": 64.33333333333333,
                     "148": 74.33333333333333,
-                    "149": 88.0
+                    "149": 87.75
                   },
                   "std": {
                     "0": 1.2583057392117918,
@@ -4475,14 +4475,14 @@
                     "146": 9.237604307034012,
                     "147": 5.77350269189626,
                     "148": 2.88675134594813,
-                    "149": 2.6457513110645907
+                    "149": 2.217355782608345
                   }
                 }
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": 46.17160974772111,
-                "y1": 80.90839025227889
+                "y0": 46.207801956100596,
+                "y1": 80.97623352061781
               }
             }
           },
@@ -4495,6 +4495,86 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  969.3728637695312,
+                  971.5340488978794,
+                  973.6952340262277,
+                  975.8564191545759,
+                  978.0176042829241,
+                  980.1787894112723,
+                  982.3399745396206,
+                  984.5011596679688,
+                  986.6623447963169,
+                  988.8235299246652,
+                  990.9847150530134,
+                  993.1459001813616,
+                  995.3070853097098,
+                  997.4682704380581,
+                  999.6294555664062
+                ],
+                "y": [
+                  14,
+                  27,
+                  55,
+                  35,
+                  35,
+                  41,
+                  49,
+                  81,
+                  25,
+                  13,
+                  11,
+                  11,
+                  35,
+                  20
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  969.3728637695312,
+                  972.3985229492188,
+                  975.4241821289063,
+                  978.4498413085937,
+                  981.4755004882812,
+                  984.5011596679688,
+                  987.5268188476563,
+                  990.5524780273438,
+                  993.5781372070312,
+                  996.6037963867187,
+                  999.6294555664062
+                ],
+                "y": [
+                  0.019742644404683218,
+                  0.044603752173543565,
+                  0.03948528880936792,
+                  0.03217319828911339,
+                  0.0511846336417713,
+                  0.06946485994240391,
+                  0.015355390092531392,
+                  0.010236926728354646,
+                  0.02339868966480974,
+                  0.024861107768860347
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": 0.3578204958815532,
+                "available_bike_stands": -0.03236239617155476,
+                "bike_stands": NaN,
+                "dew_point": 0.4082716871975947,
+                "precipitation_probability": -0.4562080685372799,
+                "rain": -0.15816326512560938,
+                "relative_humidity": -0.11967454989680765,
+                "surface_pressure": 1.0,
+                "temperature": 0.31886207469014766
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -4572,86 +4652,6 @@
                 "relative_humidity": -0.12003990093478066,
                 "surface_pressure": 1.0,
                 "temperature": 0.31907766031404783
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  969.3728637695312,
-                  971.5340488978794,
-                  973.6952340262277,
-                  975.8564191545759,
-                  978.0176042829241,
-                  980.1787894112723,
-                  982.3399745396206,
-                  984.5011596679688,
-                  986.6623447963169,
-                  988.8235299246652,
-                  990.9847150530134,
-                  993.1459001813616,
-                  995.3070853097098,
-                  997.4682704380581,
-                  999.6294555664062
-                ],
-                "y": [
-                  14,
-                  27,
-                  55,
-                  35,
-                  35,
-                  41,
-                  47,
-                  81,
-                  25,
-                  13,
-                  11,
-                  11,
-                  35,
-                  20
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  969.3728637695312,
-                  972.3985229492188,
-                  975.4241821289063,
-                  978.4498413085937,
-                  981.4755004882812,
-                  984.5011596679688,
-                  987.5268188476563,
-                  990.5524780273438,
-                  993.5781372070312,
-                  996.6037963867187,
-                  999.6294555664062
-                ],
-                "y": [
-                  0.01983038949092625,
-                  0.044801991072092644,
-                  0.039660778981853995,
-                  0.03231619028150945,
-                  0.049943203162332785,
-                  0.06977359265325904,
-                  0.015423636270720421,
-                  0.010282424180480667,
-                  0.02350268384109778,
-                  0.024971601581166392
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": 0.3581462502285898,
-                "available_bike_stands": -0.032371535106206946,
-                "bike_stands": NaN,
-                "dew_point": 0.40828428615753215,
-                "precipitation_probability": -0.45636216906020616,
-                "rain": -0.15814283771210472,
-                "relative_humidity": -0.12040884706985362,
-                "surface_pressure": 1.0,
-                "temperature": 0.31929448869900845
               }
             },
             "scatter": {
@@ -4960,7 +4960,7 @@
                     "146": 981.9980875651041,
                     "147": 982.7626749674479,
                     "148": 983.6190795898438,
-                    "149": 983.6584879557291
+                    "149": 983.6299133300781
                   },
                   "std": {
                     "0": 0.553375735572221,
@@ -5112,14 +5112,14 @@
                     "146": 0.35009612575678717,
                     "147": 0.6241119761729572,
                     "148": 0.11755618274027048,
-                    "149": 0.10771583448306242
+                    "149": 0.10488646682632254
                   }
                 }
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": 975.6188852720102,
-                "y1": 990.8328163881461
+                "y0": 975.6280332217019,
+                "y1": 990.8250801396651
               }
             }
           },
@@ -5132,6 +5132,86 @@
             "drift_score": 1.0,
             "drift_detected": false,
             "current": {
+              "type": "evidently.calculations.data_drift.DriftStatsField",
+              "distribution": {
+                "type": "evidently.metric_results.Distribution",
+                "x": [
+                  0.6000000238418579,
+                  2.7785714779581343,
+                  4.957142932074411,
+                  7.135714386190687,
+                  9.314285840306963,
+                  11.49285729442324,
+                  13.671428748539515,
+                  15.850000202655792,
+                  18.02857165677207,
+                  20.207143110888346,
+                  22.385714565004623,
+                  24.5642860191209,
+                  26.742857473237173,
+                  28.92142892735345,
+                  31.100000381469727
+                ],
+                "y": [
+                  20,
+                  37,
+                  40,
+                  58,
+                  53,
+                  67,
+                  39,
+                  45,
+                  18,
+                  30,
+                  11,
+                  23,
+                  10,
+                  1
+                ]
+              },
+              "characteristic_examples": null,
+              "characteristic_words": null,
+              "small_distribution": {
+                "type": "evidently.metric_results.DistributionIncluded",
+                "x": [
+                  0.6000000238418579,
+                  3.6500000596046447,
+                  6.7000000953674315,
+                  9.750000131130218,
+                  12.800000166893005,
+                  15.850000202655792,
+                  18.900000238418578,
+                  21.950000274181367,
+                  25.000000309944152,
+                  28.050000345706938,
+                  31.100000381469727
+                ],
+                "y": [
+                  0.01885971253092768,
+                  0.04642390776843737,
+                  0.051501522680610215,
+                  0.06745974097601055,
+                  0.043522413532910025,
+                  0.039170172179619045,
+                  0.022486580325336836,
+                  0.016683591854282188,
+                  0.019585086089809522,
+                  0.0021761206766455
+                ]
+              },
+              "correlations": {
+                "apparent_temperature": 0.9909751500756508,
+                "available_bike_stands": 0.23171551634132362,
+                "bike_stands": NaN,
+                "dew_point": 0.7151392767856812,
+                "precipitation_probability": -0.4043224774663677,
+                "rain": -0.1901010926815279,
+                "relative_humidity": -0.7632398148106032,
+                "surface_pressure": 0.3188620746901477,
+                "temperature": 1.0
+              }
+            },
+            "reference": {
               "type": "evidently.calculations.data_drift.DriftStatsField",
               "distribution": {
                 "type": "evidently.metric_results.Distribution",
@@ -5208,86 +5288,6 @@
                 "rain": -0.1904389150392963,
                 "relative_humidity": -0.7631717059593092,
                 "surface_pressure": 0.31907766031404783,
-                "temperature": 0.9999999999999999
-              }
-            },
-            "reference": {
-              "type": "evidently.calculations.data_drift.DriftStatsField",
-              "distribution": {
-                "type": "evidently.metric_results.Distribution",
-                "x": [
-                  0.6000000238418579,
-                  2.7785714779581343,
-                  4.957142932074411,
-                  7.135714386190687,
-                  9.314285840306963,
-                  11.49285729442324,
-                  13.671428748539515,
-                  15.850000202655792,
-                  18.02857165677207,
-                  20.207143110888346,
-                  22.385714565004623,
-                  24.5642860191209,
-                  26.742857473237173,
-                  28.92142892735345,
-                  31.100000381469727
-                ],
-                "y": [
-                  20,
-                  37,
-                  40,
-                  56,
-                  53,
-                  67,
-                  39,
-                  45,
-                  18,
-                  30,
-                  11,
-                  23,
-                  10,
-                  1
-                ]
-              },
-              "characteristic_examples": null,
-              "characteristic_words": null,
-              "small_distribution": {
-                "type": "evidently.metric_results.DistributionIncluded",
-                "x": [
-                  0.6000000238418579,
-                  3.6500000596046447,
-                  6.7000000953674315,
-                  9.750000131130218,
-                  12.800000166893005,
-                  15.850000202655792,
-                  18.900000238418578,
-                  21.950000274181367,
-                  25.000000309944152,
-                  28.050000345706938,
-                  31.100000381469727
-                ],
-                "y": [
-                  0.01894353347550958,
-                  0.046630236247408204,
-                  0.05027322345423697,
-                  0.06775956204701504,
-                  0.04371584648194518,
-                  0.039344261833750685,
-                  0.022586520682338334,
-                  0.01675774115141233,
-                  0.019672130916875342,
-                  0.0021857923240972583
-                ]
-              },
-              "correlations": {
-                "apparent_temperature": 0.9909967998038962,
-                "available_bike_stands": 0.2320806456587263,
-                "bike_stands": NaN,
-                "dew_point": 0.716674566544115,
-                "precipitation_probability": -0.4063671001370363,
-                "rain": -0.19077862685338223,
-                "relative_humidity": -0.7631047489815125,
-                "surface_pressure": 0.31929448869900845,
                 "temperature": 0.9999999999999999
               }
             },
@@ -5597,7 +5597,7 @@
                     "146": 16.61666711171468,
                     "147": 13.366666475931803,
                     "148": 10.699999809265137,
-                    "149": 9.09999974568685
+                    "149": 8.924999713897705
                   },
                   "std": {
                     "0": 0.47871305583805773,
@@ -5749,14 +5749,14 @@
                     "146": 1.8763889254704065,
                     "147": 1.8763883748662835,
                     "148": 0.4330127018922193,
-                    "149": 0.6082763784563227
+                    "149": 0.6075909914545847
                   }
                 }
               },
               "x_name": "Index binned",
               "plot_shape": {
-                "y0": 6.140081792145139,
-                "y1": 19.463918208278717
+                "y0": 6.134499963913834,
+                "y1": 19.449978970515865
               }
             }
           },
@@ -5776,6 +5776,7 @@
                   "2024-04-27 20:14:55",
                   "2024-04-04 20:51:32",
                   "2024-04-18 08:18:31",
+                  "2024-04-18 20:15:17",
                   "2024-04-18 19:11:50",
                   "2024-04-18 18:18:06",
                   "2024-04-18 17:13:08",
@@ -5788,7 +5789,7 @@
                   "2024-04-18 10:16:53",
                   "2024-04-18 09:15:22",
                   "2024-04-18 07:14:37",
-                  "2024-04-18 21:13:27",
+                  "2024-04-18 22:13:28",
                   "2024-04-18 06:20:12",
                   "2024-04-18 05:15:33",
                   "2024-04-18 04:16:53",
@@ -5800,10 +5801,11 @@
                   "2024-04-17 22:13:40",
                   "2024-04-17 21:14:56",
                   "2024-04-17 20:15:04",
-                  "2024-04-18 20:15:17",
-                  "2024-04-18 22:13:28",
+                  "2024-04-18 21:13:27",
+                  "2024-04-18 23:14:38",
                   "2024-04-17 18:18:53",
-                  "2024-04-19 12:25:23",
+                  "2024-04-19 13:16:22",
+                  "2024-04-20 00:59:24",
                   "2024-04-19 23:16:18",
                   "2024-04-19 22:12:57",
                   "2024-04-19 21:13:28",
@@ -5814,9 +5816,9 @@
                   "2024-04-19 16:19:59",
                   "2024-04-19 15:15:17",
                   "2024-04-19 14:13:52",
-                  "2024-04-19 13:16:22",
+                  "2024-04-19 12:25:23",
+                  "2024-04-19 00:59:23",
                   "2024-04-19 11:12:12",
-                  "2024-04-18 23:14:38",
                   "2024-04-19 10:16:06",
                   "2024-04-19 09:15:49",
                   "2024-04-19 08:18:08",
@@ -5827,10 +5829,9 @@
                   "2024-04-19 03:15:09",
                   "2024-04-19 02:25:06",
                   "2024-04-19 01:54:31",
-                  "2024-04-19 00:59:23",
                   "2024-04-17 19:10:17",
                   "2024-04-17 17:12:58",
-                  "2024-04-20 01:53:42",
+                  "2024-04-20 02:21:27",
                   "2024-04-15 23:13:40",
                   "2024-04-16 10:15:16",
                   "2024-04-16 09:14:55",
@@ -5884,10 +5885,11 @@
                   "2024-04-16 17:13:57",
                   "2024-04-16 16:18:11",
                   "2024-04-16 15:14:53",
-                  "2024-04-20 00:59:24",
-                  "2024-04-20 02:21:27",
-                  "2024-04-14 04:34:56",
-                  "2024-04-24 07:13:49",
+                  "2024-04-20 01:53:42",
+                  "2024-04-20 03:16:17",
+                  "2024-04-04 18:53:16",
+                  "2024-04-24 08:19:30",
+                  "2024-04-24 23:16:38",
                   "2024-04-24 22:15:43",
                   "2024-04-24 21:14:24",
                   "2024-04-24 20:15:20",
@@ -5898,9 +5900,9 @@
                   "2024-04-24 15:16:27",
                   "2024-04-24 14:15:38",
                   "2024-04-24 13:21:26",
-                  "2024-04-24 08:19:30",
+                  "2024-04-24 07:13:49",
+                  "2024-04-25 02:25:16",
                   "2024-04-24 06:21:49",
-                  "2024-04-25 01:02:42",
                   "2024-04-24 05:15:39",
                   "2024-04-24 04:17:10",
                   "2024-04-24 03:17:01",
@@ -5911,11 +5913,11 @@
                   "2024-04-23 22:14:56",
                   "2024-04-23 21:13:45",
                   "2024-04-23 20:59:45",
-                  "2024-04-22 13:17:38",
-                  "2024-04-24 23:16:38",
-                  "2024-04-25 02:25:16",
-                  "2024-04-22 11:12:19",
-                  "2024-04-27 11:12:24",
+                  "2024-04-25 01:02:42",
+                  "2024-04-25 03:16:01",
+                  "2024-04-22 12:48:30",
+                  "2024-04-27 13:16:06",
+                  "2024-04-28 02:28:36",
                   "2024-04-28 01:05:24",
                   "2024-04-27 23:15:40",
                   "2024-04-27 22:14:12",
@@ -5926,9 +5928,9 @@
                   "2024-04-27 16:16:08",
                   "2024-04-27 15:14:25",
                   "2024-04-27 14:12:44",
-                  "2024-04-27 13:16:06",
+                  "2024-04-27 11:12:24",
+                  "2024-04-25 04:17:54",
                   "2024-04-27 10:36:39",
-                  "2024-04-25 03:16:01",
                   "2024-04-25 14:12:05",
                   "2024-04-25 13:13:15",
                   "2024-04-25 12:22:11",
@@ -5939,11 +5941,11 @@
                   "2024-04-25 07:15:09",
                   "2024-04-25 06:19:44",
                   "2024-04-25 05:14:12",
-                  "2024-04-25 04:17:54",
-                  "2024-04-22 12:48:30",
-                  "2024-04-22 10:17:15",
-                  "2024-04-20 03:16:17",
-                  "2024-04-20 16:17:17",
+                  "2024-04-22 13:17:38",
+                  "2024-04-22 11:12:19",
+                  "2024-04-20 04:18:38",
+                  "2024-04-20 17:12:24",
+                  "2024-04-21 05:14:51",
                   "2024-04-21 04:16:43",
                   "2024-04-21 03:14:55",
                   "2024-04-21 02:25:36",
@@ -5954,9 +5956,9 @@
                   "2024-04-20 20:14:58",
                   "2024-04-20 19:12:06",
                   "2024-04-20 18:17:58",
-                  "2024-04-20 17:12:24",
+                  "2024-04-20 16:17:17",
+                  "2024-04-21 07:14:21",
                   "2024-04-20 15:14:17",
-                  "2024-04-21 06:19:09",
                   "2024-04-20 14:12:05",
                   "2024-04-20 13:15:30",
                   "2024-04-20 12:23:53",
@@ -5967,11 +5969,11 @@
                   "2024-04-20 07:12:40",
                   "2024-04-20 06:17:37",
                   "2024-04-20 05:14:27",
-                  "2024-04-20 04:18:38",
-                  "2024-04-21 05:14:51",
-                  "2024-04-21 07:14:21",
+                  "2024-04-21 06:19:09",
+                  "2024-04-21 08:17:04",
+                  "2024-04-22 10:17:15",
+                  "2024-04-21 22:13:50",
                   "2024-04-22 09:16:19",
-                  "2024-04-21 21:13:35",
                   "2024-04-22 08:19:13",
                   "2024-04-22 07:14:45",
                   "2024-04-22 06:18:56",
@@ -5982,9 +5984,9 @@
                   "2024-04-22 01:59:35",
                   "2024-04-22 01:01:39",
                   "2024-04-21 23:14:30",
-                  "2024-04-21 22:13:50",
+                  "2024-04-21 21:13:35",
+                  "2024-04-21 09:15:47",
                   "2024-04-21 20:15:12",
-                  "2024-04-21 08:17:04",
                   "2024-04-21 19:13:39",
                   "2024-04-21 18:18:25",
                   "2024-04-21 17:13:35",
@@ -5995,10 +5997,9 @@
                   "2024-04-21 12:25:16",
                   "2024-04-21 11:12:04",
                   "2024-04-21 10:14:01",
-                  "2024-04-21 09:15:47",
                   "2024-04-14 05:56:36",
+                  "2024-04-14 04:34:56",
                   "2024-04-14 03:13:54",
-                  "2024-04-04 18:53:16",
                   "2024-04-14 01:02:02",
                   "2024-04-08 04:13:31",
                   "2024-04-08 03:12:03",
@@ -6221,10 +6222,11 @@
                   "2024-04-10 18:14:41",
                   "2024-04-10 17:09:33",
                   "2024-04-10 16:15:29",
-                  "2024-04-28 02:28:36"
+                  "2024-04-28 03:16:39"
                 ],
                 "y": [
                   3,
+                  1,
                   1,
                   1,
                   1,
@@ -7128,7 +7130,8 @@
                   "2024-04-27 22:14:12",
                   "2024-04-27 23:15:40",
                   "2024-04-28 01:05:24",
-                  "2024-04-28 02:28:36"
+                  "2024-04-28 02:28:36",
+                  "2024-04-28 03:16:39"
                 ],
                 "y": [
                   1,
@@ -7573,6 +7576,7 @@
                   1,
                   1,
                   3,
+                  1,
                   1,
                   1,
                   1,
@@ -7591,7 +7595,8 @@
                 "x": [
                   "2024-04-27 20:14:55",
                   "2024-04-04 20:51:32",
-                  "2024-04-18 07:14:37",
+                  "2024-04-18 08:18:31",
+                  "2024-04-18 19:11:50",
                   "2024-04-18 18:18:06",
                   "2024-04-18 17:13:08",
                   "2024-04-18 16:18:06",
@@ -7602,9 +7607,9 @@
                   "2024-04-18 11:12:08",
                   "2024-04-18 10:16:53",
                   "2024-04-18 09:15:22",
-                  "2024-04-18 08:18:31",
+                  "2024-04-18 07:14:37",
+                  "2024-04-18 21:13:27",
                   "2024-04-18 06:20:12",
-                  "2024-04-18 20:15:17",
                   "2024-04-18 05:15:33",
                   "2024-04-18 04:16:53",
                   "2024-04-18 03:15:06",
@@ -7615,11 +7620,11 @@
                   "2024-04-17 22:13:40",
                   "2024-04-17 21:14:56",
                   "2024-04-17 20:15:04",
-                  "2024-04-17 19:10:17",
-                  "2024-04-18 19:11:50",
-                  "2024-04-18 21:13:27",
-                  "2024-04-17 17:12:58",
-                  "2024-04-19 11:12:12",
+                  "2024-04-18 20:15:17",
+                  "2024-04-18 22:13:28",
+                  "2024-04-17 18:18:53",
+                  "2024-04-19 12:25:23",
+                  "2024-04-19 23:16:18",
                   "2024-04-19 22:12:57",
                   "2024-04-19 21:13:28",
                   "2024-04-19 20:14:53",
@@ -7630,9 +7635,9 @@
                   "2024-04-19 15:15:17",
                   "2024-04-19 14:13:52",
                   "2024-04-19 13:16:22",
-                  "2024-04-19 12:25:23",
+                  "2024-04-19 11:12:12",
+                  "2024-04-18 23:14:38",
                   "2024-04-19 10:16:06",
-                  "2024-04-18 22:13:28",
                   "2024-04-19 09:15:49",
                   "2024-04-19 08:18:08",
                   "2024-04-19 07:15:11",
@@ -7643,11 +7648,11 @@
                   "2024-04-19 02:25:06",
                   "2024-04-19 01:54:31",
                   "2024-04-19 00:59:23",
-                  "2024-04-18 23:14:38",
-                  "2024-04-17 18:18:53",
-                  "2024-04-17 16:18:38",
-                  "2024-04-20 00:59:24",
-                  "2024-04-15 22:13:07",
+                  "2024-04-17 19:10:17",
+                  "2024-04-17 17:12:58",
+                  "2024-04-20 01:53:42",
+                  "2024-04-15 23:13:40",
+                  "2024-04-16 10:15:16",
                   "2024-04-16 09:14:55",
                   "2024-04-16 08:17:48",
                   "2024-04-16 07:16:38",
@@ -7658,9 +7663,9 @@
                   "2024-04-16 02:21:59",
                   "2024-04-16 01:53:23",
                   "2024-04-16 00:58:46",
-                  "2024-04-15 23:13:40",
+                  "2024-04-15 22:13:07",
+                  "2024-04-16 12:26:09",
                   "2024-04-15 21:15:14",
-                  "2024-04-16 11:12:13",
                   "2024-04-15 20:14:43",
                   "2024-04-15 19:12:39",
                   "2024-04-15 18:18:06",
@@ -7671,11 +7676,11 @@
                   "2024-04-14 14:27:34",
                   "2024-04-14 10:37:47",
                   "2024-04-14 07:53:07",
-                  "2024-04-14 05:56:36",
-                  "2024-04-16 10:15:16",
-                  "2024-04-16 12:26:09",
+                  "2024-04-16 11:12:13",
+                  "2024-04-16 13:15:53",
+                  "2024-04-17 16:18:38",
+                  "2024-04-17 03:15:25",
                   "2024-04-17 15:17:43",
-                  "2024-04-17 02:24:27",
                   "2024-04-17 13:15:19",
                   "2024-04-17 12:25:32",
                   "2024-04-17 11:13:38",
@@ -7686,9 +7691,9 @@
                   "2024-04-17 06:21:07",
                   "2024-04-17 05:14:35",
                   "2024-04-17 04:18:13",
-                  "2024-04-17 03:15:25",
+                  "2024-04-17 02:24:27",
+                  "2024-04-16 14:14:56",
                   "2024-04-17 01:55:30",
-                  "2024-04-16 13:15:53",
                   "2024-04-17 00:59:13",
                   "2024-04-16 23:14:54",
                   "2024-04-16 22:14:24",
@@ -7699,11 +7704,11 @@
                   "2024-04-16 17:13:57",
                   "2024-04-16 16:18:11",
                   "2024-04-16 15:14:53",
-                  "2024-04-16 14:14:56",
-                  "2024-04-19 23:16:18",
-                  "2024-04-20 01:53:42",
-                  "2024-04-04 18:53:16",
-                  "2024-04-24 06:21:49",
+                  "2024-04-20 00:59:24",
+                  "2024-04-20 02:21:27",
+                  "2024-04-14 04:34:56",
+                  "2024-04-24 07:13:49",
+                  "2024-04-24 22:15:43",
                   "2024-04-24 21:14:24",
                   "2024-04-24 20:15:20",
                   "2024-04-24 19:12:28",
@@ -7714,9 +7719,9 @@
                   "2024-04-24 14:15:38",
                   "2024-04-24 13:21:26",
                   "2024-04-24 08:19:30",
-                  "2024-04-24 07:13:49",
+                  "2024-04-24 06:21:49",
+                  "2024-04-25 01:02:42",
                   "2024-04-24 05:15:39",
-                  "2024-04-24 23:16:38",
                   "2024-04-24 04:17:10",
                   "2024-04-24 03:17:01",
                   "2024-04-24 02:25:26",
@@ -7727,11 +7732,11 @@
                   "2024-04-23 21:13:45",
                   "2024-04-23 20:59:45",
                   "2024-04-22 13:17:38",
-                  "2024-04-22 12:48:30",
-                  "2024-04-24 22:15:43",
-                  "2024-04-25 01:02:42",
-                  "2024-04-22 10:17:15",
-                  "2024-04-27 10:36:39",
+                  "2024-04-24 23:16:38",
+                  "2024-04-25 02:25:16",
+                  "2024-04-22 11:12:19",
+                  "2024-04-27 11:12:24",
+                  "2024-04-28 01:05:24",
                   "2024-04-27 23:15:40",
                   "2024-04-27 22:14:12",
                   "2024-04-27 21:51:42",
@@ -7742,9 +7747,9 @@
                   "2024-04-27 15:14:25",
                   "2024-04-27 14:12:44",
                   "2024-04-27 13:16:06",
-                  "2024-04-27 11:12:24",
+                  "2024-04-27 10:36:39",
+                  "2024-04-25 03:16:01",
                   "2024-04-25 14:12:05",
-                  "2024-04-25 02:25:16",
                   "2024-04-25 13:13:15",
                   "2024-04-25 12:22:11",
                   "2024-04-25 11:13:46",
@@ -7755,11 +7760,11 @@
                   "2024-04-25 06:19:44",
                   "2024-04-25 05:14:12",
                   "2024-04-25 04:17:54",
-                  "2024-04-25 03:16:01",
-                  "2024-04-22 11:12:19",
-                  "2024-04-22 09:16:19",
-                  "2024-04-20 02:21:27",
-                  "2024-04-20 15:14:17",
+                  "2024-04-22 12:48:30",
+                  "2024-04-22 10:17:15",
+                  "2024-04-20 03:16:17",
+                  "2024-04-20 16:17:17",
+                  "2024-04-21 04:16:43",
                   "2024-04-21 03:14:55",
                   "2024-04-21 02:25:36",
                   "2024-04-21 01:04:04",
@@ -7770,9 +7775,9 @@
                   "2024-04-20 19:12:06",
                   "2024-04-20 18:17:58",
                   "2024-04-20 17:12:24",
-                  "2024-04-20 16:17:17",
+                  "2024-04-20 15:14:17",
+                  "2024-04-21 06:19:09",
                   "2024-04-20 14:12:05",
-                  "2024-04-21 05:14:51",
                   "2024-04-20 13:15:30",
                   "2024-04-20 12:23:53",
                   "2024-04-20 11:11:37",
@@ -7783,11 +7788,11 @@
                   "2024-04-20 06:17:37",
                   "2024-04-20 05:14:27",
                   "2024-04-20 04:18:38",
-                  "2024-04-20 03:16:17",
-                  "2024-04-21 04:16:43",
-                  "2024-04-21 06:19:09",
+                  "2024-04-21 05:14:51",
+                  "2024-04-21 07:14:21",
+                  "2024-04-22 09:16:19",
+                  "2024-04-21 21:13:35",
                   "2024-04-22 08:19:13",
-                  "2024-04-21 20:15:12",
                   "2024-04-22 07:14:45",
                   "2024-04-22 06:18:56",
                   "2024-04-22 05:14:41",
@@ -7798,9 +7803,9 @@
                   "2024-04-22 01:01:39",
                   "2024-04-21 23:14:30",
                   "2024-04-21 22:13:50",
-                  "2024-04-21 21:13:35",
+                  "2024-04-21 20:15:12",
+                  "2024-04-21 08:17:04",
                   "2024-04-21 19:13:39",
-                  "2024-04-21 07:14:21",
                   "2024-04-21 18:18:25",
                   "2024-04-21 17:13:35",
                   "2024-04-21 16:17:10",
@@ -7811,11 +7816,11 @@
                   "2024-04-21 11:12:04",
                   "2024-04-21 10:14:01",
                   "2024-04-21 09:15:47",
-                  "2024-04-21 08:17:04",
-                  "2024-04-14 04:34:56",
+                  "2024-04-14 05:56:36",
                   "2024-04-14 03:13:54",
+                  "2024-04-04 18:53:16",
                   "2024-04-14 01:02:02",
-                  "2024-04-07 16:11:25",
+                  "2024-04-08 04:13:31",
                   "2024-04-08 03:12:03",
                   "2024-04-08 02:20:31",
                   "2024-04-08 01:51:07",
@@ -7827,8 +7832,8 @@
                   "2024-04-07 19:08:08",
                   "2024-04-07 18:12:22",
                   "2024-04-07 17:09:46",
+                  "2024-04-07 16:11:25",
                   "2024-04-07 15:10:51",
-                  "2024-04-08 05:10:53",
                   "2024-04-07 14:09:43",
                   "2024-04-07 13:12:52",
                   "2024-04-07 12:16:56",
@@ -7840,10 +7845,11 @@
                   "2024-04-07 06:12:24",
                   "2024-04-07 05:11:34",
                   "2024-04-07 04:14:04",
-                  "2024-04-08 04:13:31",
+                  "2024-04-08 05:10:53",
                   "2024-04-08 06:14:35",
-                  "2024-04-07 02:21:04",
-                  "2024-04-08 20:13:02",
+                  "2024-04-08 07:11:49",
+                  "2024-04-08 21:09:39",
+                  "2024-04-09 08:13:22",
                   "2024-04-09 07:12:01",
                   "2024-04-09 06:14:06",
                   "2024-04-09 05:10:31",
@@ -7854,9 +7860,9 @@
                   "2024-04-09 00:46:34",
                   "2024-04-08 23:11:03",
                   "2024-04-08 22:11:36",
-                  "2024-04-08 21:09:39",
+                  "2024-04-08 20:13:02",
+                  "2024-04-08 08:13:54",
                   "2024-04-08 19:09:18",
-                  "2024-04-08 07:11:49",
                   "2024-04-08 18:14:08",
                   "2024-04-08 17:11:09",
                   "2024-04-08 16:14:00",
@@ -7867,10 +7873,9 @@
                   "2024-04-08 11:09:15",
                   "2024-04-08 10:13:11",
                   "2024-04-08 09:12:02",
-                  "2024-04-08 08:13:54",
                   "2024-04-07 03:11:29",
+                  "2024-04-07 02:21:04",
                   "2024-04-07 01:52:14",
-                  "2024-04-09 09:11:26",
                   "2024-04-05 07:10:13",
                   "2024-04-05 19:10:04",
                   "2024-04-05 18:13:07",
@@ -7924,10 +7929,11 @@
                   "2024-04-06 02:16:21",
                   "2024-04-06 01:41:32",
                   "2024-04-06 00:44:40",
-                  "2024-04-09 08:13:22",
+                  "2024-04-09 09:11:26",
                   "2024-04-09 10:13:43",
-                  "2024-04-13 23:11:02",
-                  "2024-04-12 07:11:57",
+                  "2024-04-09 11:09:23",
+                  "2024-04-12 08:13:14",
+                  "2024-04-12 19:08:56",
                   "2024-04-12 18:11:15",
                   "2024-04-12 17:11:18",
                   "2024-04-12 16:12:44",
@@ -7938,9 +7944,9 @@
                   "2024-04-12 11:11:19",
                   "2024-04-12 10:11:42",
                   "2024-04-12 09:11:34",
-                  "2024-04-12 08:13:14",
+                  "2024-04-12 07:11:57",
+                  "2024-04-12 21:09:54",
                   "2024-04-12 06:14:05",
-                  "2024-04-12 20:11:05",
                   "2024-04-12 05:11:20",
                   "2024-04-12 04:12:11",
                   "2024-04-12 03:12:25",
@@ -7951,11 +7957,11 @@
                   "2024-04-11 22:09:46",
                   "2024-04-11 21:10:22",
                   "2024-04-11 20:10:53",
-                  "2024-04-11 19:08:35",
-                  "2024-04-12 19:08:56",
-                  "2024-04-12 21:09:54",
-                  "2024-04-11 17:10:03",
-                  "2024-04-13 11:07:58",
+                  "2024-04-12 20:11:05",
+                  "2024-04-12 22:08:48",
+                  "2024-04-11 18:12:48",
+                  "2024-04-13 12:14:45",
+                  "2024-04-13 23:11:02",
                   "2024-04-13 22:09:47",
                   "2024-04-13 21:08:09",
                   "2024-04-13 20:09:15",
@@ -7966,9 +7972,9 @@
                   "2024-04-13 15:07:53",
                   "2024-04-13 14:10:13",
                   "2024-04-13 13:10:16",
-                  "2024-04-13 12:14:45",
+                  "2024-04-13 11:07:58",
+                  "2024-04-12 23:08:21",
                   "2024-04-13 10:09:11",
-                  "2024-04-12 22:08:48",
                   "2024-04-13 09:09:43",
                   "2024-04-13 08:10:25",
                   "2024-04-13 07:10:49",
@@ -7979,11 +7985,11 @@
                   "2024-04-13 02:10:09",
                   "2024-04-13 01:30:12",
                   "2024-04-13 00:38:45",
-                  "2024-04-12 23:08:21",
-                  "2024-04-11 18:12:48",
-                  "2024-04-11 16:11:30",
-                  "2024-04-09 11:09:23",
-                  "2024-04-09 23:11:06",
+                  "2024-04-11 19:08:35",
+                  "2024-04-11 17:10:03",
+                  "2024-04-09 12:19:01",
+                  "2024-04-10 00:46:03",
+                  "2024-04-10 11:11:12",
                   "2024-04-10 10:11:05",
                   "2024-04-10 09:12:39",
                   "2024-04-10 08:15:24",
@@ -7994,9 +8000,9 @@
                   "2024-04-10 03:12:53",
                   "2024-04-10 02:19:23",
                   "2024-04-10 01:44:13",
-                  "2024-04-10 00:46:03",
+                  "2024-04-09 23:11:06",
+                  "2024-04-10 13:11:47",
                   "2024-04-09 22:09:37",
-                  "2024-04-10 12:18:36",
                   "2024-04-09 21:10:49",
                   "2024-04-09 20:56:45",
                   "2024-04-09 20:10:31",
@@ -8007,11 +8013,11 @@
                   "2024-04-09 15:10:39",
                   "2024-04-09 14:09:53",
                   "2024-04-09 13:10:50",
-                  "2024-04-09 12:19:01",
-                  "2024-04-10 11:11:12",
-                  "2024-04-10 13:11:47",
+                  "2024-04-10 12:18:36",
+                  "2024-04-10 14:09:53",
+                  "2024-04-11 16:11:30",
+                  "2024-04-11 04:12:19",
                   "2024-04-11 15:11:01",
-                  "2024-04-11 03:11:14",
                   "2024-04-11 14:10:00",
                   "2024-04-11 13:11:03",
                   "2024-04-11 12:18:30",
@@ -8022,9 +8028,9 @@
                   "2024-04-11 07:11:11",
                   "2024-04-11 06:14:01",
                   "2024-04-11 05:10:45",
-                  "2024-04-11 04:12:19",
+                  "2024-04-11 03:11:14",
+                  "2024-04-10 15:10:54",
                   "2024-04-11 02:20:25",
-                  "2024-04-10 14:09:53",
                   "2024-04-11 01:46:58",
                   "2024-04-11 00:47:02",
                   "2024-04-10 23:11:33",
@@ -8035,11 +8041,11 @@
                   "2024-04-10 18:14:41",
                   "2024-04-10 17:09:33",
                   "2024-04-10 16:15:29",
-                  "2024-04-10 15:10:54",
-                  "2024-04-28 01:05:24"
+                  "2024-04-28 02:28:36"
                 ],
                 "y": [
                   3,
+                  1,
                   1,
                   1,
                   1,
@@ -8942,7 +8948,8 @@
                   "2024-04-27 22:14:12",
                   "2024-04-27 23:15:40",
                   "2024-04-28 01:05:24",
-                  "2024-04-28 02:28:36"
+                  "2024-04-28 02:28:36",
+                  "2024-04-28 03:16:39"
                 ],
                 "y": [
                   1,
@@ -9387,6 +9394,7 @@
                   1,
                   1,
                   3,
+                  1,
                   1,
                   1,
                   1,
@@ -9451,24 +9459,24 @@
           "column_name": "precipitation_probability",
           "column_type": "num"
         },
-        "rain": {
-          "column_name": "rain",
-          "column_type": "num"
-        },
-        "surface_pressure": {
-          "column_name": "surface_pressure",
+        "temperature": {
+          "column_name": "temperature",
           "column_type": "num"
         },
         "apparent_temperature": {
           "column_name": "apparent_temperature",
           "column_type": "num"
         },
-        "temperature": {
-          "column_name": "temperature",
+        "surface_pressure": {
+          "column_name": "surface_pressure",
           "column_type": "num"
         },
         "relative_humidity": {
           "column_name": "relative_humidity",
+          "column_type": "num"
+        },
+        "rain": {
+          "column_name": "rain",
           "column_type": "num"
         },
         "available_bike_stands": {
