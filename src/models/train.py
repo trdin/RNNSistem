@@ -1,8 +1,9 @@
 # %%
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.layers import LSTM, Dense 
-from tensorflow.keras.models import Sequential
+import tensorflow
+#from tensorflow.keras.layers import LSTM, Dense 
+#from tensorflow.keras.models import Sequential
 import joblib
 import src.data.prepare_learn_data as pld
 import src.helpers.calculate as calc
@@ -11,6 +12,9 @@ import os
 import mlflow
 import dagshub.auth
 import dagshub
+from mlflow import MlflowClient
+from mlflow.onnx import log_model as log_onnx_model
+
 
 import src.settings as settings
 
@@ -29,11 +33,23 @@ def save_test_metrics(mae, mse, evs, file_path):
         file.write(f"EVS: {evs}\n")
 
 def build_lstm_model(input_shape):
-    model = Sequential()
+    """ model = Sequential()
     model.add(LSTM(units=32, return_sequences=True, input_shape=input_shape))
     model.add(LSTM(units=32))
     model.add(Dense(units=16, activation='relu'))
-    model.add(Dense(units=1))
+    model.add(Dense(units=1)) """
+    model = tensorflow.keras.models.Sequential()
+
+    model.add(tensorflow.keras.layers.GRU(32, return_sequences=True, input_shape=input_shape))
+
+    model.add(tensorflow.keras.layers.GRU(32, activation='relu'))
+
+    model.add(tensorflow.keras.layers.Dense(16, activation='relu'))
+
+    model.add(tensorflow.keras.layers.Dense(1))
+
+    model.compile(optimizer='adam', loss='mean_squared_error')
+
     return model
 
 def train_model(model, X_train, y_train, epochs=50, station_name = "default", batch_size=32):
@@ -62,6 +78,46 @@ def copy_station_names_to_file(data):
     except Exception as e:
         print(f"An error occurred while copying station files: {e}")
 
+
+
+
+def save_scaler_mlflow(client, scaler_type, scaler, station_name):
+    metadata = {
+        "station_name": station_name,
+        "scaler_type": scaler_type,
+        "expected_features": scaler.n_features_in_,
+        "feature_range": scaler.feature_range,
+    }
+
+    scaler = mlflow.sklearn.log_model(
+        sk_model=scaler,
+        artifact_path=f"models/{station_name}/{scaler_type}",
+        registered_model_name=f"{scaler_type}={station_name}",
+        metadata=metadata,
+    )
+
+    scaler_version = client.create_model_version(
+        name=f"{scaler_type}={station_name}",
+        source=scaler.model_uri,
+        run_id=scaler.run_id
+    )
+
+    client.transition_model_version_stage(
+        name=f"{scaler_type}={station_name}",
+        version=scaler_version.version,
+        stage="staging",
+    )
+
+
+    
+
+
+
+     
+
+
+
+
    
 def ensure_directory_exists(directory):
     if not os.path.exists(directory):
@@ -72,6 +128,8 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
     dagshub.auth.add_app_token(token=settings.mlflow_tracking_password)
     dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
     mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
+
+    client = MlflowClient()
     
     mlflow.start_run(run_name=station_name, experiment_id="1")
     
@@ -180,20 +238,48 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
     batch_size = 32
 
 
-    train_model(lstm_model_final, X_final, y_final, epochs=30, batch_size=32)
+    train_model(lstm_model_final, X_final, y_final, epochs=10, batch_size=32)
+
+    save_scaler_mlflow(client, "stands_scaler", stands_scaler, station_name)
+    save_scaler_mlflow(client, "other_scaler", other_scaler, station_name)
+
 
     mlflow.log_param("epochs", epochs)
     mlflow.log_param("batch_size", batch_size)
     mlflow.log_param("train_dataset_size", len(train_data))
+    #save_model_mlflow(lstm_model_final, station_name, client)
+
+
+    
+    station_model = mlflow.sklearn.log_model(
+            sk_model=lstm_model_final,
+            artifact_path=f"models/{station_name}/model",
+            registered_model_name=f"model={station_name}",
+            metadata={"station_name": station_name, "model_type": "LSTM"}
+        )
+    
+    model_version = client.create_model_version(
+            name=f"model={station_name}",
+            source=station_model.model_uri,
+            run_id=station_model.run_id
+        )
+
+    # Create model version stage
+    client.transition_model_version_stage(
+        name=f"model={station_name}",
+        version=model_version.version,
+        stage="staging",
+    )
+
 
 
     station_directory = './models/' + station_name
     ensure_directory_exists(station_directory)
 
-    lstm_model_final.save(os.path.join(station_directory, 'model.h5'))
+    """ lstm_model_final.save(os.path.join(station_directory, 'model.h5'))
 
     joblib.dump(stands_scaler, os.path.join(station_directory, 'stands_scaler.joblib'))
-    joblib.dump(other_scaler, os.path.join(station_directory, 'other_scaler.joblib'))
+    joblib.dump(other_scaler, os.path.join(station_directory, 'other_scaler.joblib')) """
 
     mlflow.end_run()
 

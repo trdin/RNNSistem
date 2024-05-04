@@ -3,6 +3,8 @@ import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import mutual_info_regression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import MinMaxScaler
 
 
 def printSkew(all_data):
@@ -38,6 +40,12 @@ def prepare_data(path_to_data):
     print(all_data.head())
 
 
+    pipeline = Pipeline(steps=[
+        ("scaler", MinMaxScaler()),
+        ("model", RandomForestRegressor())
+    ])
+
+
 
     all_data['date'] = pd.to_datetime(all_data['date'])
     all_data.sort_values(by='date', inplace=True)
@@ -70,11 +78,10 @@ def prepare_data(path_to_data):
         X = complete_df[columns_complete_values]
         y = complete_df[column]
         
-        model = RandomForestRegressor()
-        model.fit(X, y)
+        pipeline.fit(X, y)
         
         missing_X = missing_df[columns_complete_values]
-        predictions = model.predict(missing_X)
+        predictions = pipeline.predict(missing_X)
         
         all_data.loc[missing_df.index, column] = predictions
 
