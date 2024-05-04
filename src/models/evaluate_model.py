@@ -123,7 +123,7 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     prod_lstm_mae_adv, prod_lstm_mse_adv, prod_lstm_evs_adv = calc.calculate_metrics(prod_y_test_true, prod_y_test_predicitons)
     print(f"Staging Model Metrics: MAE={lstm_mae_adv}, MSE={lstm_mse_adv}, EVS={lstm_evs_adv}")
     print(f"Prod Model Metrics: MAE={prod_lstm_mae_adv}, MSE={prod_lstm_mse_adv}, EVS={prod_lstm_evs_adv}")
-    
+
     mlflow.log_metric("MSE_staging", lstm_mse_adv)
     mlflow.log_metric("MAE_staging", lstm_mae_adv)
     mlflow.log_metric("EVS_staging", lstm_evs_adv)
@@ -135,6 +135,8 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     tm.ensure_directory_exists('./reports/'+station_name)
     tm.save_test_metrics(lstm_mae_adv, lstm_mse_adv, lstm_evs_adv, './reports/'+station_name+'/metrics.txt')
 
+
+    replace_production_model(station_name)
 
     if prod_lstm_mse_adv > lstm_mse_adv and prod_lstm_mae_adv > lstm_mae_adv and prod_lstm_evs_adv > lstm_evs_adv:
         print("REPLACING THE MODEL")
