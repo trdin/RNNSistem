@@ -14,6 +14,9 @@ permissions:
 
 jobs:
   train_model:
+    defaults:
+      run:
+        shell: bash
     runs-on: windows-latest
 
     permissions:
@@ -77,6 +80,9 @@ jobs:
     
   evaluate_model:
     needs: train_model
+    defaults:
+      run:
+        shell: bash
     runs-on: windows-latest
 
     permissions:
