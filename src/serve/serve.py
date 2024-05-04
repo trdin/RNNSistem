@@ -8,6 +8,8 @@ import src.settings as settings
 import mlflow
 import dagshub.auth
 import dagshub
+import src.database.connector as db
+import datetime
 
 
 
@@ -36,6 +38,7 @@ def predict(data):
                     return {'error': f'Missing feature: {feature}'}, 400
 
         prediction = pred.predict(data)
+
         return {'prediction': prediction.tolist()}
     except Exception as e:
         return {'error': str(e)}, 400
@@ -51,7 +54,10 @@ def predict_air():
 
 @app.route('/predict/<int:station_id>', methods=['GET'])
 def get_model(station_id):
-    return jsonify({'predictions': pred.predict_station(station_name="station_"+str(station_id), station_number=station_id, windowsize=8)})
+
+    predictions = pred.predict_station(station_name="station_"+str(station_id), station_number=station_id, windowsize=8)
+    db.insert_prediciton(f"station_{station_id}", {'predictions': predictions, "date": datetime.datetime.now()})
+    return jsonify({'predictions': predictions})
 
     
     
@@ -61,7 +67,7 @@ def main():
     dagshub.auth.add_app_token(token=settings.mlflow_tracking_password)
     dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
     mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
-    dowload_models()
+    #dowload_models()
     app.run(host='0.0.0.0', port=3001)
 
 if __name__ == '__main__':

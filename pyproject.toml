@@ -38,6 +38,7 @@ evidently = "^0.4.19"
 mlflow = "^2.12.1"
 python-dotenv = "^1.0.1"
 dagshub = "^0.3.25"
+pymongo = "^4.7.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
@@ -64,3 +65,5 @@ test_data = "src.data_test.test_data:main"
 train = "src.models.train:main"
 train_all = "src.models.train_all_models:main"
 evaluate_model = "src.models.evaluate_model:main"
+
+test_pred = "src.test_model.test_preditions:main"
