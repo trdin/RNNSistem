@@ -59,7 +59,8 @@ def evaluate_model(data_path, station_name,windowsize = 24):
         mlflow.end_run()
         return
 
-    learn_features, all_data = pld.prepare_data(data_path)
+    learn_features, all_data, pipeline = pld.prepare_data(data_path)
+    mc.save_pipline(pipeline, station_name)
 
 
     stands_data = np.array(learn_features[:, 0])

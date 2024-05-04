@@ -90,9 +90,9 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
     
     mlflow.tensorflow.autolog()
 
-    learn_features, all_data = pld.prepare_data(data_path)
+    learn_features, all_data, pipeline = pld.prepare_data(data_path)
 
-
+    mc.save_pipline(pipeline, station_name, client)
     train_size = len(learn_features) - windowsize * test_size_multiplier
     train_data, test_data = learn_features[:train_size], learn_features[train_size:]
 

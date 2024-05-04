@@ -114,4 +114,4 @@ def prepare_data(path_to_data):
 
     learn_features = all_data[ ['available_bike_stands']+ list(selected_features)]
     learn_features = learn_features.values
-    return learn_features, all_data
+    return learn_features, all_data, pipeline

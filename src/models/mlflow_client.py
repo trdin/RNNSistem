@@ -80,6 +80,29 @@ def mlflow_save_model(model, station_name, client):
     )
 
 
+def save_pipline(pipeline, station_name, client= mlflow.MlflowClient()):
+    metadata = {
+        "station_name": station_name,
+    }
+
+    station_model = mlflow.sklearn.log_model(
+            sk_model=pipeline,
+            artifact_path=f"models/{station_name}/pipeline",
+            registered_model_name=f"pipeline={station_name}",
+            metadata=metadata
+        )
+    
+    model_version = client.create_model_version(
+            name=f"pipeline={station_name}",
+            source=station_model.model_uri,
+            run_id=station_model.run_id
+        )
+
+    client.transition_model_version_stage(
+        name=f"pipeline={station_name}",
+        version=model_version.version,
+        stage="staging",
+    )
 
 def prod_model_save(station_name):
 
