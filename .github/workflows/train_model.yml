@@ -1,7 +1,10 @@
-name: Train models
+name: Train and evaluate models
 
 on:
-  
+  workflow_run:
+      workflows: ["Fetch and Process Data"]
+      types:
+        - completed
   workflow_dispatch:
 
 env:

@@ -18,26 +18,7 @@ import src.models.mlflow_client as mc
 import src.settings as settings
 
 
-def replace_production_model(station_name):
-    model_name = f"model={station_name}"
-    abs_scaler_name = f"stands_scaler={station_name}"
-    other_scaler_name = f"other_scaler={station_name}"
 
-    try:
-        client = MlflowClient()
-
-        # Get model and scaler latest staging version
-        model_version = client.get_latest_versions(name=model_name, stages=["staging"])[0].version
-        abs_scaler_version = client.get_latest_versions(name=abs_scaler_name, stages=["staging"])[0].version
-        other_scaler_version = client.get_latest_versions(name=other_scaler_name, stages=["staging"])[0].version
-
-        # Update production model and scaler
-        client.transition_model_version_stage(model_name, model_version, "production")
-        client.transition_model_version_stage(abs_scaler_name, abs_scaler_version, "production")
-        client.transition_model_version_stage(other_scaler_name, other_scaler_version, "production")
-    except IndexError:
-        print(f"There was an error replacing production model {model_name}")
-        return None
 
 
 def evaluate_model(data_path, station_name,windowsize = 24):
@@ -73,7 +54,7 @@ def evaluate_model(data_path, station_name,windowsize = 24):
         return
 
     if prod_model is None or prod_stands_scaler is None or prod_other_scaler is None:
-        replace_production_model(station_name)
+        mc.prod_model_save(station_name)
         print(f"Production model does not exist. Replacing with latest staging model. Skipping evaluation.")
         mlflow.end_run()
         return
@@ -136,15 +117,11 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     tm.save_test_metrics(lstm_mae_adv, lstm_mse_adv, lstm_evs_adv, './reports/'+station_name+'/metrics.txt')
 
 
-    replace_production_model(station_name)
-
     if prod_lstm_mse_adv > lstm_mse_adv and prod_lstm_mae_adv > lstm_mae_adv and prod_lstm_evs_adv > lstm_evs_adv:
         print("REPLACING THE MODEL")
-        replace_production_model(station_name)
+        mc.prod_model_save(station_name)
         
     mlflow.end_run()
-
-
 
 
 def main():

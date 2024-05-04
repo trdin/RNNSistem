@@ -1,7 +1,29 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 import src.models.predict as pred
+import src.models.mlflow_client as mc
+import joblib
+import src.settings as settings
+import mlflow
+import dagshub.auth
+import dagshub
 
+
+
+def dowload_models():
+    for i in range(1, 30):
+        station_dir = f"models/station_{i}/"
+        os.makedirs(station_dir, exist_ok=True)
+        model = mc.download_model("station_" + str(i), "production")
+        stands_scaler = mc.download_scaler("station_" + str(i), "stands_scaler", "production")
+        other_scaler = mc.download_scaler("station_" + str(i), "other_scaler", "production")
+
+        model.save(os.path.join(station_dir, 'model.h5'))
+
+        joblib.dump(stands_scaler, os.path.join(station_dir, 'stands_scaler.joblib'))
+        joblib.dump(other_scaler, os.path.join(station_dir, 'other_scaler.joblib'))
+        
 
 def predict(data):
     try:
@@ -36,6 +58,10 @@ def get_model(station_id):
 
 
 def main():
+    dagshub.auth.add_app_token(token=settings.mlflow_tracking_password)
+    dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
+    mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
+    dowload_models()
     app.run(host='0.0.0.0', port=3001)
 
 if __name__ == '__main__':

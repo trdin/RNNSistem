@@ -14,6 +14,7 @@ import dagshub.auth
 import dagshub
 from mlflow import MlflowClient
 from mlflow.onnx import log_model as log_onnx_model
+import src.models.mlflow_client as mc
 
 
 import src.settings as settings
@@ -70,43 +71,8 @@ def copy_station_names_to_file(data):
 
 
 
-def save_scaler_mlflow(client, scaler_type, scaler, station_name):
-    metadata = {
-        "station_name": station_name,
-        "scaler_type": scaler_type,
-        "expected_features": scaler.n_features_in_,
-        "feature_range": scaler.feature_range,
-    }
-
-    scaler = mlflow.sklearn.log_model(
-        sk_model=scaler,
-        artifact_path=f"models/{station_name}/{scaler_type}",
-        registered_model_name=f"{scaler_type}={station_name}",
-        metadata=metadata,
-    )
-
-    scaler_version = client.create_model_version(
-        name=f"{scaler_type}={station_name}",
-        source=scaler.model_uri,
-        run_id=scaler.run_id
-    )
-
-    client.transition_model_version_stage(
-        name=f"{scaler_type}={station_name}",
-        version=scaler_version.version,
-        stage="staging",
-    )
-
 
     
-
-
-
-     
-
-
-
-
    
 def ensure_directory_exists(directory):
     if not os.path.exists(directory):
@@ -229,36 +195,19 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
 
     train_model(lstm_model_final, X_final, y_final, epochs=10, batch_size=32)
 
-    save_scaler_mlflow(client, "stands_scaler", stands_scaler, station_name)
-    save_scaler_mlflow(client, "other_scaler", other_scaler, station_name)
+    mc.mlflow_save_scaler(client, "stands_scaler", stands_scaler, station_name)
+    mc.mlflow_save_scaler(client, "other_scaler", other_scaler, station_name)
 
 
     mlflow.log_param("epochs", epochs)
     mlflow.log_param("batch_size", batch_size)
     mlflow.log_param("train_dataset_size", len(train_data))
-    #save_model_mlflow(lstm_model_final, station_name, client)
+    mc.mlflow_save_model(lstm_model_final, station_name, client)
+
 
 
     
-    station_model = mlflow.sklearn.log_model(
-            sk_model=lstm_model_final,
-            artifact_path=f"models/{station_name}/model",
-            registered_model_name=f"model={station_name}",
-            metadata={"station_name": station_name, "model_type": "LSTM"}
-        )
     
-    model_version = client.create_model_version(
-            name=f"model={station_name}",
-            source=station_model.model_uri,
-            run_id=station_model.run_id
-        )
-
-    # Create model version stage
-    client.transition_model_version_stage(
-        name=f"model={station_name}",
-        version=model_version.version,
-        stage="staging",
-    )
 
 
 
