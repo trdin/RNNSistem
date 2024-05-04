@@ -35,18 +35,11 @@ jobs:
         with:
           python-version: '3.11.3'
 
-      - name: cache poetry install
-        uses: actions/cache@v2
-        with:
-          path: ~/.local
-          key: windows-poetry-1.8.2
-
       - uses: snok/install-poetry@v1
         with:
           version: 1.8.2
           virtualenvs-create: true
           virtualenvs-in-project: true
-          virtualenvs-path: windows-poetry-1.8.2/virtualenvs
 
       - name: cache deps
         id: cache-deps
