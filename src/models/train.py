@@ -2,8 +2,8 @@
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 import tensorflow
-#from tensorflow.keras.layers import LSTM, Dense 
-#from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense 
+from tensorflow.keras.models import Sequential
 import joblib
 import src.data.prepare_learn_data as pld
 import src.helpers.calculate as calc
@@ -33,22 +33,11 @@ def save_test_metrics(mae, mse, evs, file_path):
         file.write(f"EVS: {evs}\n")
 
 def build_lstm_model(input_shape):
-    """ model = Sequential()
+    model = Sequential()
     model.add(LSTM(units=32, return_sequences=True, input_shape=input_shape))
     model.add(LSTM(units=32))
     model.add(Dense(units=16, activation='relu'))
-    model.add(Dense(units=1)) """
-    model = tensorflow.keras.models.Sequential()
-
-    model.add(tensorflow.keras.layers.GRU(32, return_sequences=True, input_shape=input_shape))
-
-    model.add(tensorflow.keras.layers.GRU(32, activation='relu'))
-
-    model.add(tensorflow.keras.layers.Dense(16, activation='relu'))
-
-    model.add(tensorflow.keras.layers.Dense(1))
-
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    model.add(Dense(units=1))
 
     return model
 
