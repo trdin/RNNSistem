@@ -234,7 +234,7 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
 
     lstm_model_final = build_lstm_model(input_shape)
 
-    epochs = 30
+    epochs = 10
     batch_size = 32
 
 
