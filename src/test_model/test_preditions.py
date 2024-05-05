@@ -11,7 +11,7 @@ from datetime import timedelta
 from sklearn.metrics import mean_absolute_error, mean_squared_error, explained_variance_score
 
 
-def test_predictions(station_name, station_data):
+def predictions_test(station_name, station_data):
     
 
     predictions_data = db.preditcions_today(station_name)
@@ -67,7 +67,7 @@ def main():
     mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
     
     
-    for i in range(1,15):
+    for i in range(1,30):
         print("Testing model for station ", i, " ------------------------------------")  
 
         station_data = pd.read_csv(os.path.join(f"./data/processed/{i}/" f"station_{i}.csv"))
@@ -78,7 +78,7 @@ def main():
         station_data.reset_index(inplace=True)
         station_data = station_data.set_index(['date'])
 
-        test_predictions("station_"+str(i), station_data)
+        predictions_test("station_"+str(i), station_data)
 
         
 

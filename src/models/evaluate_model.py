@@ -43,7 +43,6 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     stands_scaler = mc.download_scaler(station_name, "stands_scaler", "staging")
     other_scaler = mc.download_scaler(station_name, "other_scaler", "staging")
 
-
     #dowload for produciton 
     prod_model = mc.download_model_onnx(station_name, "production")
     prod_stands_scaler = mc.download_scaler(station_name, "stands_scaler", "production")
