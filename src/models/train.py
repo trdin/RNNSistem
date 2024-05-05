@@ -1,7 +1,7 @@
 # %%
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-import tensorflow
+import tensorflow as tf
 from tensorflow.keras.layers import LSTM, Dense 
 from tensorflow.keras.models import Sequential
 import joblib
@@ -15,9 +15,55 @@ import dagshub
 from mlflow import MlflowClient
 from mlflow.onnx import log_model as log_onnx_model
 import src.models.mlflow_client as mc
+from mlflow.onnx import log_model as log_onnx_model
+import tf2onnx
+from mlflow.models import infer_signature
+import onnxruntime as ort
 
 
 import src.settings as settings
+
+
+def mlflow_save_onnx(model, station_name, client, window_size, feature_number, X_test):
+    model.output_names = ["output"]
+
+    input_signature = [
+        tf.TensorSpec(shape=(None, window_size, feature_number), dtype=tf.double, name="input")
+    ]
+
+    onnx_model, _ = tf2onnx.convert.from_keras(model=model, input_signature=input_signature, opset=13)
+
+    station_model = log_onnx_model(onnx_model=onnx_model,
+                            artifact_path=f"models/{station_name}/model",
+                            signature=infer_signature(X_test, model.predict(X_test)),
+                            registered_model_name=f"model={station_name}")
+
+    
+    metadata = {
+        "station_name": station_name,
+        "model_type": "LSTM",
+        "input_shape": model.input_shape,
+        "output_shape": model.output_shape,
+    }
+
+    """ station_model = mlflow.onnx.log_model(
+            onnx_model=model,
+            artifact_path=f"models/{station_name}/model",
+            registered_model_name=f"model={station_name}",
+        ) """
+    
+    model_version = client.create_model_version(
+            name=f"model={station_name}",
+            source=station_model.model_uri,
+            run_id=station_model.run_id
+        )
+
+    client.transition_model_version_stage(
+        name=f"model={station_name}",
+        version=model_version.version,
+        stage="staging",
+    )
+
 
 
 def save_train_metrics(history, file_path):
@@ -78,7 +124,7 @@ def ensure_directory_exists(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-def train(data_path, station_name, test = False,windowsize = 24, test_size_multiplier = 10):
+def train(data_path, station_name, test = False,windowsize = 24, test_size_multiplier = 10, ):
 
     dagshub.auth.add_app_token(token=settings.mlflow_tracking_password)
     dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
@@ -86,7 +132,7 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
 
     client = MlflowClient()
     
-    mlflow.start_run(run_name=station_name, experiment_id="1")
+    mlflow.start_run(run_name=station_name, experiment_id="3")
     
     mlflow.tensorflow.autolog()
 
@@ -202,7 +248,8 @@ def train(data_path, station_name, test = False,windowsize = 24, test_size_multi
     mlflow.log_param("epochs", epochs)
     mlflow.log_param("batch_size", batch_size)
     mlflow.log_param("train_dataset_size", len(train_data))
-    mc.mlflow_save_model(lstm_model_final, station_name, client)
+    #mc.mlflow_save_model(lstm_model_final, station_name, client)
+    mlflow_save_onnx(lstm_model_final, station_name, client, windowsize, 8, X_final)
 
 
 

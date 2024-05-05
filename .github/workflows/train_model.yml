@@ -20,7 +20,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     permissions:
       contents: write
@@ -38,8 +38,8 @@ jobs:
       - name: cache poetry install
         uses: actions/cache@v2
         with:
-          path: ~/.local-windows
-          key: windows-poetry-1.8.2
+          path: ~/.local
+          key: poetry-1.8.2
 
       - uses: snok/install-poetry@v1
         with:

@@ -10,3 +10,5 @@ services:
     build: ./src/client/
     ports:
       - "8080:80"
+    environment:
+      - REACT_APP_API_URL=http://server:3001

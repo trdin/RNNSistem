@@ -6,13 +6,14 @@ import src.data.weather_data as w
 import src.data.mbike_data as mbike_data
 import json
 from datetime import timedelta
+import onnxruntime as ort
 
 
 
 
 def predict(data, station_name = "default"):
 
-    model = tf.keras.models.load_model('./models/'+station_name+'/model.h5')
+    model = ort.InferenceSession(f"./models/{station_name}/model_production.onnx")
     stands_scaler = joblib.load('./models/'+station_name+'/stands_scaler.joblib')
     other_scaler = joblib.load('./models/'+station_name+'/other_scaler.joblib')
 
@@ -62,7 +63,7 @@ def predict(data, station_name = "default"):
     X_predict = X_predict.reshape(1, X_predict.shape[1], X_predict.shape[0])
     
 
-    prediction = model.predict(X_predict)
+    prediction = model.run(["output"], {"input":X_predict})[0]
     prediction =  stands_scaler.inverse_transform(prediction)
     return prediction
 

@@ -16,6 +16,7 @@ import src.models.train as tm
 import src.models.mlflow_client as mc
 
 import src.settings as settings
+import onnxruntime as ort
 
 
 
@@ -29,7 +30,7 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
     mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
     
-    mlflow.start_run(run_name=station_name, experiment_id="1", nested=True)
+    mlflow.start_run(run_name=station_name, experiment_id="3", nested=True)
     
     mlflow.tensorflow.autolog()
 
@@ -38,12 +39,13 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     stands_scaler = joblib.load('./models/'+station_name+'/stands_scaler.joblib')
     other_scaler = joblib.load('./models/'+station_name+'/other_scaler.joblib') """
 
-    model = mc.download_model(station_name, "staging")
+    model = mc.download_model_onnx(station_name, "staging")
     stands_scaler = mc.download_scaler(station_name, "stands_scaler", "staging")
     other_scaler = mc.download_scaler(station_name, "other_scaler", "staging")
 
+
     #dowload for produciton 
-    prod_model = mc.download_model(station_name, "production")
+    prod_model = mc.download_model_onnx(station_name, "production")
     prod_stands_scaler = mc.download_scaler(station_name, "stands_scaler", "production")
     prod_other_scaler = mc.download_scaler(station_name, "other_scaler", "production")
 
@@ -58,9 +60,13 @@ def evaluate_model(data_path, station_name,windowsize = 24):
         print(f"Production model does not exist. Replacing with latest staging model. Skipping evaluation.")
         mlflow.end_run()
         return
+    
+    #https://stackoverflow.com/questions/71279968/getting-a-prediction-from-an-onnx-model-in-python
+    model = ort.InferenceSession(model)
+    prod_model = ort.InferenceSession(prod_model)
 
     learn_features, all_data, pipeline = pld.prepare_data(data_path)
-    mc.save_pipline(pipeline, station_name)
+    #mc.save_pipline(pipeline, station_name)
 
 
     stands_data = np.array(learn_features[:, 0])
@@ -90,8 +96,8 @@ def evaluate_model(data_path, station_name,windowsize = 24):
     X_final = X_final.reshape(X_final.shape[0], X_final.shape[2], X_final.shape[1])
     prod_X_final = prod_X_final.reshape(prod_X_final.shape[0], prod_X_final.shape[2], prod_X_final.shape[1])
     
-    y_test_predicitons = model.predict(X_final)
-    prod_y_test_predicitons = prod_model.predict(X_final)
+    y_test_predicitons = model.run(["output"], {"input":X_final})[0]
+    prod_y_test_predicitons = prod_model.run(["output"], {"input":X_final})[0]
     
 
     y_test_true = stands_scaler.inverse_transform(y_final.reshape(-1, 1))

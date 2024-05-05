@@ -1,5 +1,21 @@
 import mlflow
+from mlflow.onnx import load_model as load_onnx
+import onnx
 
+def download_model_onnx(station_name, stage):
+    model_name = f"model={station_name}"
+
+    try:
+        client = mlflow.MlflowClient()
+        model = load_onnx( client.get_latest_versions(name=model_name, stages=[stage])[0].source)
+
+        onnx.save_model(model, f"./models/{station_name}/model_{stage}.onnx")
+
+        return f"./models/{station_name}/model_{stage}.onnx"
+    except IndexError:
+        print(f"Error downloading {stage}, {model_name}")
+        return None
+    
 def download_model(station_name, stage):
     model_name = f"model={station_name}"
 
@@ -11,8 +27,7 @@ def download_model(station_name, stage):
     except IndexError:
         print(f"Error downloading {stage}, {model_name}")
         return None
-
-
+    
 def download_scaler(station_name, scaler_type, stage):
     scaler_name = f"{scaler_type}={station_name}"
 

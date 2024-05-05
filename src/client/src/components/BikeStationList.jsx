@@ -38,7 +38,7 @@ const BikeStationList = () => {
   useEffect(() => {
     if (selectedStation != null) {
       setLoading(true); // Set loading to true when fetching predictions
-      fetch("http://localhost:3001/predict/" + selectedStation.number)
+      fetch(`${process.env.REACT_APP_API_URL}/predict/${selectedStation.number}`)
         .then((response) => response.json())
         .then((data) => {
           const roundedPredictions = data.predictions.map((prediction) =>
