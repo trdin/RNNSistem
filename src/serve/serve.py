@@ -1,14 +1,28 @@
+print("###############--STARTING THE SERVE SCRIPT--###############")
+
+
+print("Importing Flask, request, jsonify from flask")
 from flask import Flask, request, jsonify
+print("Importing CORS from flask_cors")
 from flask_cors import CORS
+print("Importing os")
 import os
+print("Importing predict from src.models")
 import src.models.predict as pred
+print("Importing mlflow_client from src.models")
 import src.models.mlflow_client as mc
+print("Importing joblib")
 import joblib
+print("Importing settings from src")
 import src.settings as settings
+print("Importing mlflow")
 import mlflow
+print("Importing auth and dagshub from dagshub")
 import dagshub.auth
 import dagshub
+print("Importing connector from src.database")
 import src.database.connector as db
+print("Importing datetime")
 import datetime
 
 

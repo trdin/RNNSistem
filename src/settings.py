@@ -1,13 +1,18 @@
 import os
 from dotenv import load_dotenv
 
+
+print("###############--Getting variables--###############")
+
+
 # Load environment variables from .env file
 load_dotenv()
 
-print("###############--Getting variables--###############")
 print(os.getenv("MLFLOW_TRACKING_URI"))
 print(os.getenv("MLFLOW_TRACKING_USERNAME"))
 print(os.getenv("MLFLOW_TRACKING_PASSWORD"))
+
+
 
 
 # Access environment variables
