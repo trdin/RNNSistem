@@ -2,8 +2,11 @@ name: Build Image and Deploy to Northflank
 
 # Build and deploy the application everytime someone pushes to the "master" branch.
 on:
-   push:
-      branches: ['main']
+    push:
+      branches: 
+        - main
+      paths:
+        - 'src/**'
 
 env:
    REGISTRY: ghcr.io

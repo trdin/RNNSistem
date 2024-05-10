@@ -63,6 +63,7 @@ def get_model(station_id):
 
 
 def main():
+    print("###############--Starting server--##############")
     dagshub.auth.add_app_token(token=settings.mlflow_tracking_password)
     dagshub.init("RNNSistem", settings.mlflow_tracking_username, mlflow=True)
     mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
