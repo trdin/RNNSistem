@@ -23,4 +23,4 @@ EXPOSE 3001
 ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 # Command to run the application
-CMD ["poetry", "run", "serve"]
+CMD ["poetry", "run", "python", "src/serve/serve.py"]
