@@ -1,4 +1,4 @@
-name: Build API to northflank
+name: Deploy Client to northflank
 
 # Build and deploy the application everytime someone pushes to the "master" branch.
 on:
