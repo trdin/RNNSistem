@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+ARG REACT_APP_API_URL=https://p01--api--lmdv97v8xxkc.code.run
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
 # Copy the rest of the application
 COPY . .
 
