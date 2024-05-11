@@ -40,13 +40,13 @@ jobs:
    
          - name: Setup Dagshub
            run: |
-             poetry run dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
-             poetry run dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
-             poetry run dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
+             dvc remote modify origin endpointurl https://dagshub.com/trdin.peter10/RNNSistem.s3
+             dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID }}
+             dvc remote modify origin --local secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
    
          - name: Pull data
            run: |
-             poetry run dvc pull -r origin
+             dvc pull -r origin
 
          # Step 2 - Authenticate us with the container registry we intend to push a image to.
          - name: Log in to the Container registry
