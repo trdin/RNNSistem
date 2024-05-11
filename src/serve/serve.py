@@ -1,4 +1,4 @@
-print("###############--STARTING THE SERVE SCRIPT--################")
+print("################--STARTING THE SERVE SCRIPT--################")
 
 
 print("Importing Flask, request, jsonify from flask")
